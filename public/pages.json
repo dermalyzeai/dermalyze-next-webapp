@@ -1,0 +1,27 @@
+[
+  {
+    "label": "Home",
+    "path": "/"
+  },
+  {
+    "label": "About",
+    "path": "/about"
+  },
+  {
+    "label": "Services",
+    "children": [
+      {
+        "label": "Web Development",
+        "path": "/services/web-development"
+      },
+      {
+        "label": "App Development",
+        "path": "/services/app-development"
+      }
+    ]
+  },
+  {
+    "label": "Contact",
+    "path": "/contact"
+  }
+]

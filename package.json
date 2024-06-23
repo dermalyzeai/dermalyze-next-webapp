@@ -1,0 +1,15 @@
+{
+  "entry_script": "start",
+  "entry_file": "pages/index.js",
+  "scripts": {
+    "start": "next dev -p 3450"
+  },
+  "dependencies": {
+    "@popperjs/core": "^2.11.8",
+    "bootstrap": "^5.3.3",
+    "fuse.js": "^7.0.0",
+    "next": "9.3.5",
+    "react": "16.13.1",
+    "react-dom": "16.13.1"
+  }
+}
