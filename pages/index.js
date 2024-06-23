@@ -6,6 +6,7 @@ import Canvas from '../components/Canvas';
 import SingleFileUploader from '../components/FileUpload';
 import SubmitButton from '../components/SubmitButton';
 import BigBlock from '../components/BigBlock';
+import LoadingSpinner from '../components/LoadingSpinner';
 
 const Home = () => {
   
@@ -19,6 +20,7 @@ const Home = () => {
       </div>
       <SingleFileUploader />
       <SubmitButton />
+      <LoadingSpinner />
       <div>
         <h2 style={{textAlign:'center'}} id='classificationText'>Run our AI for a result!</h2>
       </div>

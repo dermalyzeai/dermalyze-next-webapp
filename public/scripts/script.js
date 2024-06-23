@@ -61,8 +61,8 @@ async function runExample(test=true) {
 }
 
 export async function RunMain(test=true) {
-  //var el = document.getElementById('spinner');
-  //el.style.display  = 'block';
+  var el = document.getElementById('spinner');
+  el.style.display  = 'block';
   var imgFile = document.getElementById("file").files[0];
   var img = new Image;
   const canvas = document.getElementById("canvas");
@@ -103,8 +103,8 @@ async function RunModel(data, width, height) {
     outputData = outputMap.values().next().value.data;
     pred = printMatchesEczemaPsoriasis(outputData);
   }
-  //var el = document.getElementById('spinner');
-  //el.style.display  = 'none';
+  var el = document.getElementById('spinner');
+  el.style.display  = 'none';
 }
 
 function drawImageScaled(img, ctx) {
