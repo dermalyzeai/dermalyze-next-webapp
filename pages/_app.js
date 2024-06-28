@@ -30,7 +30,6 @@ function MyApp({ Component, pageProps }) {
         .then(() => loadScript('./scripts/ndarray-browser.min.js'))
         .then(() => loadScript('https://cdn.jsdelivr.net/npm/onnxjs/dist/onnx.min.js'))
         .then(() => loadScript('./scripts/script.js'))
-        .then(() => loadScript('./scripts/NewGpt.js'))
  
         .catch((error) => {
           console.error('Error loading scripts:', error);

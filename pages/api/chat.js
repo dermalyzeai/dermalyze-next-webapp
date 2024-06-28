@@ -36,7 +36,7 @@ export default async (req, res) => {
       }
 
       const data = await response.json();
-      console.log(data);
+      console.log(response);
       const generatedText = data[0]?.generated_text || "No response generated";
       res.status(200).json({ response: generatedText });
     } catch (error) {
