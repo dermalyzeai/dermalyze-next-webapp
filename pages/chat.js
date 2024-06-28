@@ -31,12 +31,11 @@ export default function Home() {
     <div style={styles.container}>
       <h1>Dermalyze Ai Assistant</h1>
       <form onSubmit={handleSubmit} style={styles.form}>
-        <input 
-          type="text" 
+        <textarea 
           value={input} 
           onChange={(e) => setInput(e.target.value)} 
           required 
-          style={styles.input}
+          style={styles.textarea}
         />
         <button type="submit" style={styles.button}>Submit</button>
       </form>
@@ -66,12 +65,14 @@ const styles = {
     width: '100%',
     maxWidth: '600px',
   },
-  input: {
+  textarea: {
     width: '100%',
+    height: '150px', // Adjust this height as needed
     padding: '10px',
     fontSize: '16px',
     marginBottom: '10px',
     boxSizing: 'border-box',
+    resize: 'vertical', // Allows the user to resize the textarea vertically
   },
   button: {
     padding: '10px 20px',
