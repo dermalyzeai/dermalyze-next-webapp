@@ -28,21 +28,60 @@ export default function Home() {
   };
 
   return (
-    <div>
-      <h1>LLM Chat</h1>
-      <form onSubmit={handleSubmit}>
+    <div style={styles.container}>
+      <h1>Dermalyze Ai Assistant</h1>
+      <form onSubmit={handleSubmit} style={styles.form}>
         <input 
           type="text" 
           value={input} 
           onChange={(e) => setInput(e.target.value)} 
           required 
+          style={styles.input}
         />
-        <button type="submit">Submit</button>
+        <button type="submit" style={styles.button}>Submit</button>
       </form>
-      <div>
+      <div style={styles.responseContainer}>
         <h2>Response:</h2>
         <p>{response}</p>
       </div>
     </div>
   );
 }
+
+const styles = {
+  container: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '100vh',
+    padding: '0 20px',
+    boxSizing: 'border-box',
+    textAlign: 'center',
+  },
+  form: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    width: '100%',
+    maxWidth: '600px',
+  },
+  input: {
+    width: '100%',
+    padding: '10px',
+    fontSize: '16px',
+    marginBottom: '10px',
+    boxSizing: 'border-box',
+  },
+  button: {
+    padding: '10px 20px',
+    fontSize: '16px',
+    cursor: 'pointer',
+  },
+  responseContainer: {
+    marginTop: '20px',
+    width: '100%',
+    maxWidth: '600px',
+    textAlign: 'left',
+  }
+};
