@@ -4,7 +4,7 @@ export default async (req, res) => {
   if (req.method === 'POST') {
     const { input } = req.body;
     const apiKey = process.env.AWANLLM_API_KEY;
-
+    //console.log(input);
     try {
       const response = await fetch(
         'https://api.awanllm.com/v1/chat/completions',
@@ -36,7 +36,7 @@ export default async (req, res) => {
       }
 
       const data = await response.json();
-      console.log(response);
+      console.log(data.choices[0]);
       const generatedText = data[0]?.generated_text || "No response generated";
       res.status(200).json({ response: generatedText });
     } catch (error) {
