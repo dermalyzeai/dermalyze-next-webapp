@@ -18,14 +18,14 @@ export default async (req, res) => {
             {
               "model": "Meta-Llama-3-8B-Instruct",
               "messages": [
-                {"role": "user", "content": input},
-                {"role": "assistant", "content": "Hi!, how can I help you today?"}
+                {"role": "user", "content": input + " (limit responses to 15 sentences or less.)"},
+                {"role": "assistant", "content": "Hi!, I am your AI powered skin health assistant how can I help you today?"}
               ],
               "repetition_penalty": 1.1,
               "temperature": 0.7,
               "top_p": 0.9,
               "top_k": 40,
-              "max_tokens": 64,
+              "max_tokens": 256,
               "stream": false
         }),  
         }
