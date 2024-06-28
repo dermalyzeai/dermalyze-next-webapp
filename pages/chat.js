@@ -1,11 +1,14 @@
 import { useState } from 'react';
+import LoadingSpinnerLLM from '../components/LoadingSpinnerLLM';
 
 export default function Home() {
   const [input, setInput] = useState('');
   const [response, setResponse] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true); // Show loading spinner
     try {
       const res = await fetch('/api/chat', {
         method: 'POST',
@@ -24,6 +27,8 @@ export default function Home() {
     } catch (error) {
       console.error(error);
       setResponse('Error: Unable to get a response');
+    } finally {
+      setLoading(false); // Hide loading spinner
     }
   };
 
@@ -39,6 +44,7 @@ export default function Home() {
         />
         <button type="submit" style={styles.button}>Submit</button>
       </form>
+      {loading && <LoadingSpinnerLLM />}
       <div style={styles.responseContainer}>
         <h2>Response:</h2>
         <p>{response}</p>
@@ -67,12 +73,12 @@ const styles = {
   },
   textarea: {
     width: '100%',
-    height: '150px', // Adjust this height as needed
+    height: '150px',
     padding: '10px',
     fontSize: '16px',
     marginBottom: '10px',
     boxSizing: 'border-box',
-    resize: 'vertical', // Allows the user to resize the textarea vertically
+    resize: 'vertical',
   },
   button: {
     padding: '10px 20px',
