@@ -60,6 +60,25 @@ text-align: center
   margin-bottom: 2rem;
   border-radius: 0.3rem;
 }
+/* posts */
+.my-masonry-grid {
+  display: flex;
+  margin-left: -30px; /* gutter size offset */
+  width: auto;
+}
+.my-masonry-grid_column {
+  padding-left: 30px; /* gutter size */
+  background-clip: padding-box;
+}
+.post-box {
+  background: white;
+  padding: 20px;
+  margin-bottom: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
 /* #root {
   max-width: 1280px;
   margin: 0 auto;
