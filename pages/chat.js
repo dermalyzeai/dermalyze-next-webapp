@@ -47,7 +47,9 @@ export default function Home() {
       {loading && <LoadingSpinnerLLM />}
       <div style={styles.responseContainer}>
         <h2>Response:</h2>
-        <p>{response}</p>
+        <div style={styles.responseContent}>
+          <p>{response}</p>
+        </div>
       </div>
     </div>
   );
@@ -90,5 +92,12 @@ const styles = {
     width: '100%',
     maxWidth: '600px',
     textAlign: 'left',
+  },
+  responseContent: {
+    maxHeight: '300px', // Adjust this height as needed
+    overflowY: 'auto',
+    border: '1px solid #ccc',
+    padding: '10px',
+    boxSizing: 'border-box',
   }
 };
