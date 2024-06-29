@@ -6,6 +6,29 @@ import matter from 'gray-matter';
 import { serialize } from 'next-mdx-remote/serialize';
 import { MDXRemote } from 'next-mdx-remote';
 
+const Posts = ({ posts }) => {
+  const breakpointColumnsObj = {
+    default: 3,
+    1100: 2,
+    700: 1,
+  };
+
+  return (
+    <Masonry
+      breakpointCols={breakpointColumnsObj}
+      className="my-masonry-grid"
+      columnClassName="my-masonry-grid_column"
+    >
+      {posts.map((post, index) => (
+        <div key={index} className="post-box">
+          <h2>{post.frontmatter.title}</h2>
+          <MDXRemote {...post.content} />
+        </div>
+      ))}
+    </Masonry>
+  );
+};
+
 export async function getStaticProps() {
   const files = fs.readdirSync(path.join('posts'));
 
@@ -34,28 +57,3 @@ export async function getStaticProps() {
 }
 
 export default Posts;
-
-const Posts = ({ posts }) => {
-  const breakpointColumnsObj = {
-    default: 3,
-    1100: 2,
-    700: 1,
-  };
-
-  return (
-    <Masonry
-      breakpointCols={breakpointColumnsObj}
-      className="my-masonry-grid"
-      columnClassName="my-masonry-grid_column"
-    >
-      {posts.map((post, index) => (
-        <div key={index} className="post-box">
-          <h2>{post.frontmatter.title}</h2>
-          <MDXRemote {...post.content} />
-        </div>
-      ))}
-    </Masonry>
-  );
-};
-
-
