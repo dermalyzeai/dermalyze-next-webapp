@@ -1,0 +1,33 @@
+.postContainer {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.postImage {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.postTitle {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.postDate {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.postDescription {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.postContent {
+  font-size: 1rem;
+  line-height: 1.6;
+}
