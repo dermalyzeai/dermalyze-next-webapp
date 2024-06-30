@@ -5,7 +5,7 @@ const ContactForm = () => {
     <div style={{ maxWidth: '600px', margin: '0 auto' }}>
       <h2>Contact Us</h2>
       <form
-        action="https://docs.google.com/forms/d/e/YOUR_FORM_ID/formResponse"
+        action=""
         method="POST"
         target="_blank"
       >
