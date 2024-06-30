@@ -47,7 +47,7 @@ function MyApp({ Component, pageProps }) {
       <script>
         console.log("kk");
       </script>
-  
+      <link rel="icon" href="https://github.com/4301e00e-966d-44c8-b913-d06cf7b553b1" type="image/x-icon"/>
     </Head>
     <Layout>
       <Component {...pageProps} />

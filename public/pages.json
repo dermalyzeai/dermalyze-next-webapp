@@ -13,6 +13,7 @@
   },
   {
     "label": "Services",
+    "test": "test",
     "children": [
       {
         "label": "Web Development",
@@ -23,6 +24,10 @@
         "path": "/services/app-development"
       }
     ]
+  },
+  {
+    "label": "Posts",
+    "path": "/posts"
   },
   {
     "label": "Contact",

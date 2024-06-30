@@ -13,6 +13,9 @@ const Navbar = () => {
 
   const renderMenuItems = (items) => {
     return items.map((item, index) => {
+      if (item.test) {
+        return;
+      }
       if (item.children) {
         return (
           <li key={index} className={styles.dropdown}>
