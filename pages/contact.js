@@ -1,19 +1,24 @@
 import React from 'react';
 
+const formAction = process.env.CONTACT_FORM_ACTION
+const firstNameID = process.env.CONTACT_FIRST_NAME_ID
+const lastNameID = process.env.CONTACT_LAST_NAME_ID
+const emailID = process.env.CONTACT_EMAIL_ID
+const messageID = process.env.CONTACT_MESSAGE_ID
+
 const ContactForm = () => {
   return (
     <div style={{ maxWidth: '600px', margin: '0 auto' }}>
       <h2>Contact Us</h2>
       <form
-        action=""
+        action={formAction}
         method="POST"
-        target="_blank"
       >
         <div style={{ marginBottom: '15px' }}>
           <label>First Name:</label>
           <input
             type="text"
-            name="entry.FIRST_NAME_ENTRY_ID"
+            name={firstNameID}
             required
             style={{ width: '100%', padding: '8px' }}
           />
@@ -22,7 +27,7 @@ const ContactForm = () => {
           <label>Last Name:</label>
           <input
             type="text"
-            name="entry.LAST_NAME_ENTRY_ID"
+            name={lastNameID}
             required
             style={{ width: '100%', padding: '8px' }}
           />
@@ -31,7 +36,7 @@ const ContactForm = () => {
           <label>Email:</label>
           <input
             type="email"
-            name="entry.EMAIL_ENTRY_ID"
+            name={emailID}
             required
             style={{ width: '100%', padding: '8px' }}
           />
@@ -39,7 +44,7 @@ const ContactForm = () => {
         <div style={{ marginBottom: '15px' }}>
           <label>Message:</label>
           <textarea
-            name="entry.MESSAGE_ENTRY_ID"
+            name={messageID}
             required
             rows="4"
             style={{ width: '100%', padding: '8px' }}
