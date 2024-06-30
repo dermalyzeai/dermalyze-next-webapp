@@ -1,21 +1,24 @@
 // pages/posts/index.js
 
 import Link from 'next/link';
-import client from '../../utils/contentfulPosts';
 import styles from './posts.module.css';
+import client from '../../utils/contentfulPosts';
 
 export default function Posts({ posts }) {
   return (
     <div className={styles.container}>
-      <h1 style={{ textAlign: 'center' }}>Posts</h1>
+      <h1>Posts</h1>
       <div className={styles.grid}>
         {posts.map((post) => (
-          <Link href={`/posts/${post.fields.slug}`}>
           <div key={post.sys.id} className={styles.postBox}>
-
-              <a>{post.fields.title}</a>
+            <Link href={`/posts/${post.fields.slug}`}>
+              <a>
+                <h2>{post.fields.title}</h2>
+                <p>{new Date(post.fields.date).toLocaleDateString()}</p>
+                <p>{post.fields.description}</p>
+              </a>
+            </Link>
           </div>
-          </Link>
         ))}
       </div>
     </div>
