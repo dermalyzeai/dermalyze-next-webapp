@@ -7,14 +7,13 @@
   height: 100%;
   z-index: -1;
   background-color: #ffffff; /* Adjust background color */
-  overflow: hidden;
 }
 
 .particle {
   position: absolute;
-  background-color: #000000; /* Adjust particle color */
-  width: 50px;
-  height: 50px;
+  background-color: #eeeeee; /* Adjust particle color */
+  width: 8px;
+  height: 8px;
   border-radius: 50%; /* Makes particles round */
   animation: float 5s infinite linear; /* Adjust animation properties */
 }
@@ -24,6 +23,6 @@
     transform: translateY(0);
   }
   100% {
-    transform: translateY(-100vh);
+    transform: translateY(-40vh);
   }
 }
