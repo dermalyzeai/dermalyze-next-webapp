@@ -13,6 +13,9 @@ export default function Posts({ posts }) {
           <div key={post.sys.id} className={styles.postBox}>
             <Link href={`/posts/${post.fields.slug}`}>
               <a>
+                {post.fields.imageUrl && (
+                  <img src={post.fields.imageUrl} alt={post.fields.title} className={styles.postImage} />
+                )}
                 <h2>{post.fields.title}</h2>
                 <p>{new Date(post.fields.date).toLocaleDateString()}</p>
                 <p>{post.fields.description}</p>
