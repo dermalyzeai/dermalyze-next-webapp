@@ -18,7 +18,7 @@ const About = () => {
 
   return (
     <div className={styles.container}>
-      <h1>About Us</h1>
+      <h1 style={{ textAlign: 'center' }}>About Us</h1>
       <div className={styles.grid}>
         {sections.map((section, index) => (
           <div key={index} className={styles.sectionBox}>
