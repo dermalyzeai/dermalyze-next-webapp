@@ -9,6 +9,18 @@ const ParticlesBackground = () => {
       <div className={styles.particle}></div>
       <div className={styles.particle}></div>
       <div className={styles.particle}></div>
+      <div className={styles.particle}></div>
+      <div className={styles.particle}></div>
+      <div className={styles.particle}></div>
+      <div className={styles.particle}></div>
+      <div className={styles.particle}></div>
+      <div className={styles.particle}></div>
+      <div className={styles.particle}></div>
+      <div className={styles.particle}></div>
+      <div className={styles.particle}></div>
+      <div className={styles.particle}></div>
+      <div className={styles.particle}></div>
+      <div className={styles.particle}></div>
       {/* Add more particles as needed */}
     </div>
   );
