@@ -2,20 +2,22 @@
 
 import Link from 'next/link';
 import client from '../../utils/contentfulPosts';
+import styles from './posts.module.css';
 
 export default function Posts({ posts }) {
   return (
-    <div>
-      <h1>Posts</h1>
-      <ul>
+    <div className={styles.container}>
+      <h1 style={{ textAlign: 'center' }}>Posts</h1>
+      <div className={styles.grid}>
         {posts.map((post) => (
-          <li key={post.sys.id}>
-            <Link href={`/posts/${post.fields.slug}`}>
+          <Link href={`/posts/${post.fields.slug}`}>
+          <div key={post.sys.id} className={styles.postBox}>
+
               <a>{post.fields.title}</a>
-            </Link>
-          </li>
+          </div>
+          </Link>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }
