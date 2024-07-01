@@ -27,6 +27,7 @@ const About = () => {
           </div>
         ))}
       </div>
+      <h1 style={{ textAlign: 'center' }}>Meet the Team</h1>
     </div>
   );
 };
