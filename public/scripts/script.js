@@ -146,7 +146,7 @@ function printMatchesMain(data) {
   console.log(data);
   console.log(skinClassifications[predIndex]);
   document.getElementById('classificationText').innerHTML = skinClassifications[predIndex];
-  document.getElementById('classificationTextLink').href = '/posts/' + skinClassifications[predIndex] + '/';
+  //document.getElementById('classificationTextLink').href = '/posts/' + skinClassifications[predIndex] + '/';
   return predIndex;
 }
 
@@ -159,7 +159,7 @@ function printMatchesEczemaPsoriasis(data) {
   console.log(data);
   console.log(skinClassifications[predIndex]);
   document.getElementById('classificationText').innerHTML = skinClassifications[predIndex];
-  document.getElementById('classificationTextLink').href = '/posts/' + skinClassifications[predIndex] +'/';
+  //document.getElementById('classificationTextLink').href = '/posts/' + skinClassifications[predIndex] +'/';
   return predIndex;
 }
   
