@@ -16,6 +16,22 @@ const About = () => {
     },
   ];
 
+  const teamMembers = [
+    {
+      name: 'Neelesh Chevuri',
+      jobTitle: 'Founder & Cheif Technical Officer',
+      description: 'Neelesh is passionate about artificial intelligence and its applications in everyday life. With a background in computer science, he leads the development of Dermalyze and its technology.',
+      image: '/john-doe.jpg', // Replace with actual image path
+    },
+    {
+      name: 'Adway Kulkarni',
+      jobTitle: 'Lead Medical Researcher',
+      description: 'Description coming soon...',
+      image: '/jane-smith.jpg', // Replace with actual image path
+    },
+    // Add more team members as needed
+  ];
+
   return (
     <div className={styles.container}>
       <h1 style={{ textAlign: 'center' }}>About Dermalyze</h1>
@@ -27,10 +43,20 @@ const About = () => {
           </div>
         ))}
       </div>
+      <div style={{ padding: '5px' }}></div>
       <h1 style={{ textAlign: 'center' }}>Meet the Team</h1>
+      <div className={styles.grid}>
+        {teamMembers.map((member, index) => (
+          <div key={index} className={styles.sectionBox}>
+            <img src={member.image} alt={member.name} className={styles.memberImage} />
+            <h3>{member.name}</h3>
+            <p>{member.jobTitle}</p>
+            <p>{member.description}</p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
 
 export default About;
-
