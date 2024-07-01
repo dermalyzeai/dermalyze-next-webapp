@@ -1,8 +1,24 @@
 // utils/fetchInstagramPosts.js
+const fetch = require('node-fetch');
+
 const fetchInstagramPosts = async (accessToken) => {
-  const response = await fetch(`https://graph.instagram.com/me/media?fields=id,caption,media_url,permalink,timestamp&access_token=${accessToken}`);
-  const data = await response.json();
-  return data.data;
+  try {
+    const response = await fetch(
+      `hhttps://graph.instagram.com/v18.0/6948265175253817/media?access_token=${accessToken}`
+    );
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error('Error fetching Instagram posts:', errorText);
+      throw new Error('Error fetching Instagram posts');
+    }
+
+    const data = await response.json();
+    return data.data;
+  } catch (error) {
+    console.error('Fetch error:', error);
+    throw error;
+  }
 };
 
-export default fetchInstagramPosts;
+module.exports = fetchInstagramPosts;
