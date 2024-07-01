@@ -4,7 +4,7 @@ const fetch = require('node-fetch');
 const fetchInstagramPosts = async (accessToken) => {
   try {
     const response = await fetch(
-      `hhttps://graph.instagram.com/v18.0/6948265175253817/media?access_token=${accessToken}`
+      `hhttps://graph.instagram.com/me/media?access_token=${accessToken}`
     );
 
     if (!response.ok) {
