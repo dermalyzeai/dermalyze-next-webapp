@@ -1,41 +1,72 @@
-/* pages/instagram.module.css */
-.container {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 20px;
-  text-align: center;
+/* styles/Instagram.module.css */
+.instagramPosts {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
+.instagramTitle {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.postContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
 }
 
 .post {
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    overflow: hidden;
+    position: relative;
 }
 
-.post:hover {
-  transform: scale(1.05);
+.postLink {
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s ease;
 }
 
-.image {
-  width: 100%;
-  height: auto;
+.postLink:hover {
+    transform: translateY(-3px);
 }
 
-.caption {
-  margin: 10px 0;
-  padding: 0 10px;
+.postMedia {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover; /* Ensure images and videos maintain aspect ratio */
 }
 
-.date {
-  margin: 10px 0;
-  padding: 0 10px;
+.carouselContainer {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Hide scrollbar for modern browsers */
+    -ms-overflow-style: none; /* Hide scrollbar for Internet Explorer and Edge */
+    max-width: 100%; /* Ensure the carousel container does not exceed its parent's width */
+}
+
+.carouselItem {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+    margin-right: 10px; /* Adjust spacing between carousel items */
+    cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+.carouselImage {
+    width: auto; /* Allow images to adjust width based on their aspect ratio */
+    max-height: 300px; /* Limit the height of carousel images */
+    object-fit: cover; /* Ensure images maintain aspect ratio and cover the container */
+}
+
+.carouselVideo {
+    width: auto; /* Allow videos to adjust width based on their aspect ratio */
+    max-height: 300px; /* Limit the height of carousel videos */
 }

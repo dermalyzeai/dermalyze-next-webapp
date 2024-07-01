@@ -9,14 +9,14 @@ const fetchInstagramPosts = async (accessToken) => {
 
     if (!response.ok) {
       const errorText = await response.text();
-      console.error('Error fetching Instagram posts:', errorText);
+      console.log('Error fetching Instagram posts:', errorText);
       throw new Error('Error fetching Instagram posts');
     }
 
     const data = await response.json();
     return data.data;
   } catch (error) {
-    console.error('Fetch error:', error);
+    console.log('Fetch error:', error);
     throw error;
   }
 };
