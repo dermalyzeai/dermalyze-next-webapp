@@ -7,10 +7,10 @@
   height: 100%;
   z-index: -1;
   background-color: #ffffff; /* Adjust background color */
+  overflow: hidden; /* Ensure particles stay within the bounds */
 }
 
 .particle {
-  /* Add the blur effect */
   filter: blur(2px);
   -webkit-filter: blur(2px);
   position: absolute;
@@ -18,7 +18,8 @@
   width: 10px;
   height: 10px;
   border-radius: 50%; /* Makes particles round */
-  animation: float 5s infinite linear; /* Adjust animation properties */
+  /*animation: float 5s infinite linear; /* Adjust animation properties */
+  transition: transform 0.1s ease-out; /* Smooth parallax effect */
 }
 
 @keyframes float {
