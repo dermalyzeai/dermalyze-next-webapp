@@ -7,6 +7,7 @@ import SingleFileUploader from '../components/FileUpload';
 import SubmitButton from '../components/SubmitButton';
 import BigBlock from '../components/BigBlock';
 import LoadingSpinner from '../components/LoadingSpinner';
+import Link from 'next/link';
 
 const Home = () => {
   
@@ -22,7 +23,9 @@ const Home = () => {
       <SubmitButton />
       <LoadingSpinner />
       <div>
+      <Link href={''} as={`'classificationLinkText'?id='classificationTextLink'`}>
         <h2 style={{textAlign:'center'}} id='classificationText'>Run our AI for a result!</h2>
+      </Link>
       </div>
     </div>
   );
