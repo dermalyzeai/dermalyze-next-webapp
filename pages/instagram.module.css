@@ -24,6 +24,8 @@
     background-color: #ffffff;
     overflow: hidden;
     position: relative;
+    padding: 5px;
+    border-radius: 10px;
 }
 
 .postLink {
@@ -46,6 +48,7 @@
     height: auto;
     display: block;
     object-fit: cover; /* Ensure images and videos maintain aspect ratio */
+    border-radius: 5px;
 }
 
 .carouselContainer {
@@ -63,10 +66,10 @@
 }
 
 .carouselItem {
-    flex: 0 0 auto;
-    margin-right: 10px; /* Adjust spacing between carousel items */
+    flex: 0 0 100%; /* Ensure each carousel item takes full width */
     scroll-snap-align: start; /* Ensure each carousel item starts at the snap point */
     width: 100%; /* Ensure each carousel item takes full width */
+    box-sizing: border-box;
 }
 
 .carouselImage {

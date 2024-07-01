@@ -22,29 +22,49 @@ const InstagramPosts = () => {
         fetchPosts();
     }, []);
 
-    const scrollRef = useRef(null);
+    const scrollRef = useRef([]);
 
-    const scrollLeft = () => {
-        if (scrollRef.current) {
-            scrollRef.current.scrollBy({
-                left: -scrollRef.current.offsetWidth,
+    const scrollLeft = (index) => {
+        if (scrollRef.current[index]) {
+            const currentScrollPosition = scrollRef.current[index].scrollLeft;
+            const itemWidth = scrollRef.current[index].offsetWidth;
+            scrollRef.current[index].scrollBy({
+                left: -itemWidth,
                 behavior: 'smooth'
             });
+
+            setTimeout(() => {
+                const newScrollPosition = scrollRef.current[index].scrollLeft;
+                if (currentScrollPosition === newScrollPosition) {
+                    scrollRef.current[index].scrollLeft = 0;
+                }
+            }, 500);
         }
     };
 
-    const scrollRight = () => {
-        if (scrollRef.current) {
-            scrollRef.current.scrollBy({
-                left: scrollRef.current.offsetWidth,
+    const scrollRight = (index) => {
+        if (scrollRef.current[index]) {
+            const currentScrollPosition = scrollRef.current[index].scrollLeft;
+            const itemWidth = scrollRef.current[index].offsetWidth;
+            const maxScrollLeft = scrollRef.current[index].scrollWidth - itemWidth;
+
+            scrollRef.current[index].scrollBy({
+                left: itemWidth,
                 behavior: 'smooth'
             });
+
+            setTimeout(() => {
+                const newScrollPosition = scrollRef.current[index].scrollLeft;
+                if (currentScrollPosition === newScrollPosition) {
+                    scrollRef.current[index].scrollLeft = maxScrollLeft;
+                }
+            }, 500);
         }
     };
 
     return (
         <div className={styles.instagramPosts}>
-            <h2 className={styles.instagramTitle}>Top 3 Instagram Posts</h2>
+            <h2 className={styles.instagramTitle}>Our 3 Recent Instagram Posts!</h2>
             <div className={styles.postContainer}>
                 {posts.map((post, postIndex) => (
                     <a key={post.id} href={post.permalink} target="_blank" rel="noopener noreferrer" className={styles.postLink}>
@@ -63,8 +83,8 @@ const InstagramPosts = () => {
                                 </div>
                             ) : post.media_type === 'CAROUSEL_ALBUM' && (
                                 <div className={styles.carouselContainer}>
-                                    <button className={styles.carouselButton} onClick={scrollLeft}>{'<'}</button>
-                                    <div className={styles.carouselList} ref={scrollRef}>
+                                    <button className={styles.carouselButton} onClick={() => scrollLeft(postIndex)}>{'<'}</button>
+                                    <div className={styles.carouselList} ref={(el) => scrollRef.current[postIndex] = el}>
                                         {post.children.data.map((child, childIndex) => (
                                             <div key={child.id} className={styles.carouselItem}>
                                                 {child.media_type === 'IMAGE' && (
@@ -79,7 +99,7 @@ const InstagramPosts = () => {
                                             </div>
                                         ))}
                                     </div>
-                                    <button className={styles.carouselButton} onClick={scrollRight}>{'>'}</button>
+                                    <button className={styles.carouselButton} onClick={() => scrollRight(postIndex)}>{'>'}</button>
                                 </div>
                             )}
                             <p className={styles.postCaption}>{post.caption}</p>
