@@ -14,7 +14,7 @@
 
 .postContainer {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr); /* Ensure 3 posts per row */
     gap: 20px;
 }
 
@@ -30,10 +30,15 @@
     text-decoration: none;
     color: inherit;
     transition: transform 0.2s ease;
+    display: block;
 }
 
 .postLink:hover {
     transform: translateY(-3px);
+}
+
+.mediaContainer {
+    position: relative;
 }
 
 .postMedia {
@@ -44,29 +49,55 @@
 }
 
 .carouselContainer {
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
+    position: relative;
+    overflow: hidden; /* Hide overflowing carousel items */
+}
+
+.carouselList {
+    display: flex; /* Display carousel items in a row */
+    overflow-x: auto; /* Enable horizontal scrolling */
+    scroll-snap-type: x mandatory; /* Ensure each carousel item snaps to the container's scroll snap points */
+    -webkit-overflow-scrolling: touch; /* Enable smooth scrolling on iOS devices */
     scrollbar-width: none; /* Hide scrollbar for modern browsers */
     -ms-overflow-style: none; /* Hide scrollbar for Internet Explorer and Edge */
-    max-width: 100%; /* Ensure the carousel container does not exceed its parent's width */
 }
 
 .carouselItem {
     flex: 0 0 auto;
-    scroll-snap-align: start;
     margin-right: 10px; /* Adjust spacing between carousel items */
-    cursor: pointer; /* Change cursor to pointer on hover */
+    scroll-snap-align: start; /* Ensure each carousel item starts at the snap point */
+    width: 100%; /* Ensure each carousel item takes full width */
 }
 
 .carouselImage {
-    width: auto; /* Allow images to adjust width based on their aspect ratio */
-    max-height: 300px; /* Limit the height of carousel images */
+    width: 100%; /* Ensure images fill the carousel item */
+    height: auto; /* Maintain aspect ratio */
     object-fit: cover; /* Ensure images maintain aspect ratio and cover the container */
 }
 
 .carouselVideo {
-    width: auto; /* Allow videos to adjust width based on their aspect ratio */
-    max-height: 300px; /* Limit the height of carousel videos */
+    width: 100%; /* Ensure videos fill the carousel item */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: cover; /* Ensure videos maintain aspect ratio and cover the container */
+}
+
+.carouselButton {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    font-size: 18px;
+    z-index: 1;
+}
+
+.carouselButton:first-of-type {
+    left: 10px;
+}
+
+.carouselButton:last-of-type {
+    right: 10px;
 }
