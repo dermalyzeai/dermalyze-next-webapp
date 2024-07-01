@@ -10,10 +10,13 @@
 }
 
 .particle {
+  /* Add the blur effect */
+  filter: blur(2px);
+  -webkit-filter: blur(2px);
   position: absolute;
   background-color: #eeeeee; /* Adjust particle color */
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%; /* Makes particles round */
   animation: float 5s infinite linear; /* Adjust animation properties */
 }
