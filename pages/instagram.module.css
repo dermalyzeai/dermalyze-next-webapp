@@ -7,9 +7,15 @@
 }
 
 .instagramTitle {
-    font-size: 24px;
+    font-size: 32px;
     margin-bottom: 20px;
     text-align: center;
+    background: #dddddd;
+    width: min-content;
+    padding: 5px;
+    border-radius: 15px;
+    self-align: center;
+    width: 100%;
 }
 
 .postContainer {
@@ -26,6 +32,11 @@
     position: relative;
     padding: 5px;
     border-radius: 10px;
+    transition: transform 0.2s ease;
+}
+
+.post:hover {
+    box-shadow: 0 4px 8px rgba(0, 255, 255, 0.5);
 }
 
 .postLink {
