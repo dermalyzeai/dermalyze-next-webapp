@@ -4,22 +4,24 @@ import styles from './instagram.module.css';
 
 const InstagramPosts = () => {
     const [posts, setPosts] = useState([]);
+    const [profile, setProfile] = useState(null);
 
     useEffect(() => {
-        const fetchPosts = async () => {
+        const fetchInstagramData = async () => {
             try {
                 const response = await fetch(`/api/instagramPosts`);
                 if (!response.ok) {
-                    throw new Error('Failed to fetch Instagram posts');
+                    throw new Error('Failed to fetch Instagram data');
                 }
                 const data = await response.json();
-                setPosts(data.data.slice(0, 3)); // Limit to top 3 posts
+                setPosts(data.posts.slice(0, 3)); // Limit to top 3 posts
+                setProfile(data.profile);
             } catch (error) {
-                console.error('Error fetching Instagram posts:', error.message);
+                console.error('Error fetching Instagram data:', error.message);
             }
         };
 
-        fetchPosts();
+        fetchInstagramData();
     }, []);
 
     const cleanCaption = (caption) => {
@@ -68,10 +70,10 @@ const InstagramPosts = () => {
 
     return (
         <div className={styles.instagramPosts}>
-            <h2 className={styles.instagramTitle}>Our Latest Instagram Posts</h2>
+            <h2 className={styles.instagramTitle}>Top 3 Instagram Posts</h2>
             <div className={styles.postContainer}>
                 {posts.map((post, postIndex) => (
-                    <a key={post.id} href={post.permalink} target="_blank" rel="noopener noreferrer" className={styles.postLink}>
+                    <a key={post.id} href={`https://www.instagram.com/p/${post.id}`} target="_blank" rel="noopener noreferrer" className={styles.postLink}>
                         <div className={styles.post}>
                             {post.media_type === 'IMAGE' || post.media_type === 'VIDEO' ? (
                                 <div className={styles.mediaContainer}>
@@ -111,6 +113,15 @@ const InstagramPosts = () => {
                     </a>
                 ))}
             </div>
+            {profile && (
+                <div className={styles.profileSection}>
+                    <img src={profile.profile_picture_url} alt={profile.username} className={styles.profilePicture} />
+                    <div className={styles.profileInfo}>
+                        <h3>{profile.username}</h3>
+                        <a href={`https://www.instagram.com/${profile.username}`} target="_blank" rel="noopener noreferrer" className={styles.followLink}>Follow me on Instagram</a>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };
