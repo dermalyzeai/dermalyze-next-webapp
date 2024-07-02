@@ -65,6 +65,7 @@
 .carouselContainer {
     position: relative;
     overflow: hidden; /* Hide overflowing carousel items */
+    border-radius: 5px;
 }
 
 .carouselList {

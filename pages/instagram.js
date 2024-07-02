@@ -1,6 +1,6 @@
-// pages/index.js (or any other page)
+// pages/index.js
 import React, { useEffect, useState, useRef } from 'react';
-import styles from './instagram.module.css'; // Import CSS module for styling
+import styles from './instagram.module.css';
 
 const InstagramPosts = () => {
     const [posts, setPosts] = useState([]);
@@ -8,12 +8,12 @@ const InstagramPosts = () => {
     useEffect(() => {
         const fetchPosts = async () => {
             try {
-                const response = await fetch(`/api/instagramPosts?limit=3`); // Fetch top 3 posts
+                const response = await fetch(`/api/instagramPosts`);
                 if (!response.ok) {
                     throw new Error('Failed to fetch Instagram posts');
                 }
                 const data = await response.json();
-                setPosts(data.data);
+                setPosts(data.data.slice(0, 3)); // Limit to top 3 posts
             } catch (error) {
                 console.error('Error fetching Instagram posts:', error.message);
             }
@@ -21,6 +21,10 @@ const InstagramPosts = () => {
 
         fetchPosts();
     }, []);
+
+    const cleanCaption = (caption) => {
+        return caption ? caption.replace(/#\w+\s?/g, '').trim() : '';
+    };
 
     const scrollRef = useRef([]);
 
@@ -64,7 +68,7 @@ const InstagramPosts = () => {
 
     return (
         <div className={styles.instagramPosts}>
-            <h2 className={styles.instagramTitle}>Our 3 Recent Instagram Posts!</h2>
+            <h2 className={styles.instagramTitle}>Our Latest Instagram Posts</h2>
             <div className={styles.postContainer}>
                 {posts.map((post, postIndex) => (
                     <a key={post.id} href={post.permalink} target="_blank" rel="noopener noreferrer" className={styles.postLink}>
@@ -85,7 +89,7 @@ const InstagramPosts = () => {
                                 <div className={styles.carouselContainer}>
                                     <button className={styles.carouselButton} onClick={() => scrollLeft(postIndex)}>{'<'}</button>
                                     <div className={styles.carouselList} ref={(el) => scrollRef.current[postIndex] = el}>
-                                        {post.children.data.map((child, childIndex) => (
+                                        {post.children.data.map((child) => (
                                             <div key={child.id} className={styles.carouselItem}>
                                                 {child.media_type === 'IMAGE' && (
                                                     <img src={child.media_url} alt={post.caption} className={styles.carouselImage} />
@@ -102,7 +106,7 @@ const InstagramPosts = () => {
                                     <button className={styles.carouselButton} onClick={() => scrollRight(postIndex)}>{'>'}</button>
                                 </div>
                             )}
-                            <p className={styles.postCaption}>{post.caption}</p>
+                            <p className={styles.postCaption}>{cleanCaption(post.caption)}</p>
                         </div>
                     </a>
                 ))}
