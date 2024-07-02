@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from 'react';
 import styles from './backgroundAnimation.module.css';
 
 const ParticlesBackground = () => {
-  const particleCount = 20; // Adjust number of particles as needed
+  const particleCount = 30; // Adjust number of particles as needed
   const particlesRef = useRef([]);
 
   useEffect(() => {
@@ -20,8 +20,8 @@ const ParticlesBackground = () => {
     };
 
     const handleMouseMove = (e) => {
-      const mouseX = (e.clientX / window.innerWidth - 0.5) * 2; // Normalize to -1 to 1 range
-      const mouseY = (e.clientY / window.innerHeight - 0.5) * 2; // Normalize to -1 to 1 range
+      const mouseX = (e.clientX / window.innerWidth - 0.5) * 8; // Normalize to -1 to 1 range
+      const mouseY = (e.clientY / window.innerHeight - 0.5) * 8; // Normalize to -1 to 1 range
       particlesRef.current.forEach((particle) => {
         if (particle) {
           particle.style.transform = `translate(${mouseX * 10}px, ${mouseY * 10}px)`;

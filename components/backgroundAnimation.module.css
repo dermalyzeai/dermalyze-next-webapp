@@ -15,8 +15,8 @@
   -webkit-filter: blur(2px);
   position: absolute;
   background-color: #eeeeee; /* Adjust particle color */
-  width: 10px;
-  height: 10px;
+  width: 15px;
+  height: 15px;
   border-radius: 50%; /* Makes particles round */
   /*animation: float 5s infinite linear; /* Adjust animation properties */
   transition: transform 0.1s ease-out; /* Smooth parallax effect */
