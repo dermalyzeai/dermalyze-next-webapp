@@ -115,10 +115,10 @@ const InstagramPosts = () => {
             </div>
             {profile && (
                 <div className={styles.profileSection}>
-                    <img src={profile.profile_picture_url} alt={profile.username} className={styles.profilePicture} />
+                    <img src="/DermalyzeLogo.png" alt={profile.username} className={styles.profilePicture} />
                     <div className={styles.profileInfo}>
-                        <h3>{profile.username}</h3>
-                        <a href={`https://www.instagram.com/${profile.username}`} target="_blank" rel="noopener noreferrer" className={styles.followLink}>Follow me on Instagram</a>
+                        <h3>Dermalyze</h3>
+                        <a href={`https://www.instagram.com/${profile.username}`} target="_blank" rel="noopener noreferrer" className={styles.followLink}>Follow us on Instagram</a>
                     </div>
                 </div>
             )}
