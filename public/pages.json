@@ -5,7 +5,16 @@
   },
   {
     "label": "About",
-    "path": "/about"
+    "children": [
+      {
+        "label": "Us",
+        "path": "/about"
+      },
+      {
+        "label": "Team",
+        "path": "/about#team"
+      }
+    ]
   },
   {
     "label": "Chat",
@@ -28,6 +37,10 @@
   {
     "label": "Posts",
     "path": "/posts"
+  },
+  {
+    "label": "Insta",
+    "path": "/instagram"
   },
   {
     "label": "Contact",

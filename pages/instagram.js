@@ -70,7 +70,7 @@ const InstagramPosts = () => {
 
     return (
         <div className={styles.instagramPosts}>
-            <h2 className={styles.instagramTitle}>Top 3 Instagram Posts</h2>
+            <h2 className={styles.instagramTitle}>Our Latest Instagram Posts</h2>
             <div className={styles.postContainer}>
                 {posts.map((post, postIndex) => (
                     <a key={post.id} href={`https://www.instagram.com/p/${post.id}`} target="_blank" rel="noopener noreferrer" className={styles.postLink}>

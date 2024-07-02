@@ -44,7 +44,7 @@ const About = () => {
         ))}
       </div>
       <div style={{ padding: '5px' }}></div>
-      <h1 style={{ textAlign: 'center' }}>Meet the Team</h1>
+      <h1 style={{ textAlign: 'center' }} id='team'>Meet the Team</h1>
       <div className={styles.grid}>
         {teamMembers.map((member, index) => (
           <div key={index} className={styles.sectionBox}>
