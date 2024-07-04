@@ -73,7 +73,7 @@ const InstagramPosts = () => {
             <h2 className={styles.instagramTitle}>Our Latest Instagram Posts</h2>
             <div className={styles.postContainer}>
                 {posts.map((post, postIndex) => (
-                    <a key={post.id} href={`https://www.instagram.com/p/${post.id}`} target="_blank" rel="noopener noreferrer" className={styles.postLink}>
+                    
                         <div className={styles.post}>
                             {post.media_type === 'IMAGE' || post.media_type === 'VIDEO' ? (
                                 <div className={styles.mediaContainer}>
@@ -108,9 +108,10 @@ const InstagramPosts = () => {
                                     <button className={styles.carouselButton} onClick={() => scrollRight(postIndex)}>{'>'}</button>
                                 </div>
                             )}
+                            <a key={post.id} href={`${post.permalink}`} target="_blank" rel="noopener noreferrer" className={styles.postLink}>
                             <p className={styles.postCaption}>{cleanCaption(post.caption)}</p>
+                            </a>
                         </div>
-                    </a>
                 ))}
             </div>
             {profile && (

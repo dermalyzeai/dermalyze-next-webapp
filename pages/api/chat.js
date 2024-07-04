@@ -19,7 +19,7 @@ export default async (req, res) => {
               "model": "Meta-Llama-3-8B-Instruct",
               "messages": [
                 {"role": "user", "content": input + " (limit responses to 15 sentences or less.)"},
-                {"role": "assistant", "content": "Hi!, I am your AI powered skin health assistant how can I help you today?"}
+                {"role": "assistant", "content": "Hi!"}
               ],
               "repetition_penalty": 1.1,
               "temperature": 0.7,

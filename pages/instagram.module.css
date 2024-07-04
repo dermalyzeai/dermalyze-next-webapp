@@ -48,6 +48,7 @@
 
 .postLink:hover {
     transform: translateY(-3px);
+    text-decoration: underline;
 }
 
 .mediaContainer {
