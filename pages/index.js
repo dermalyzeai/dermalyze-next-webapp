@@ -39,6 +39,16 @@ const Home = () => {
     <div>
       <div style={{ padding: '5px' }}></div>
       <BigBlock />
+      <div className={styles.instructions}>
+        <h2>How to Use the App</h2>
+        <ol>
+          <li>Upload a clear image of your skin condition using the file uploader below.</li>
+          <li>Click the "Run Dermalyze" button to run the image analysis.</li>
+          <li>Wait for the AI to process the image. This may take up-to a minute.</li>
+          <li>You will then see the result displayed on the screen.</li>
+          <li>Click on the result to get more detailed information and recommendations.</li>
+        </ol>
+      </div>
       <h1 style={{ textAlign: 'center' }}>Skin Health AI</h1>
       <div style={{ textAlign: 'center' }}>
         <Canvas />
