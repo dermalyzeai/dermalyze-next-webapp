@@ -4,6 +4,7 @@ import styles from './Navbar.module.css';
 
 const Navbar = () => {
   const [pages, setPages] = useState([]);
+  const [email, setEmail] = useState('');
 
   useEffect(() => {
     fetch('/pages.json')
@@ -11,10 +12,29 @@ const Navbar = () => {
       .then(data => setPages(data));
   }, []);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const formUrl = 'actionURL';
+    const entryField = 'id';
+    const formData = new FormData();
+    formData.append(entryField, email);
+
+    fetch(formUrl, {
+      method: 'POST',
+      mode: 'no-cors',
+      body: formData,
+    }).then(() => {
+      alert('Thanks for subscribing!');
+      setEmail('');
+    }).catch((error) => {
+      console.error('Error:', error);
+    });
+  };
+
   const renderMenuItems = (items) => {
     return items.map((item, index) => {
       if (item.test) {
-        return;
+        return null;
       }
       if (item.children) {
         return (
@@ -43,6 +63,17 @@ const Navbar = () => {
           <a>Dermalyze</a>
         </Link>
       </div>
+      <form onSubmit={handleSubmit} className={styles.subscriptionForm}>
+        <input
+          type="email"
+          placeholder="Enter your email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+          className={styles.emailInput}
+        />
+        <button type="submit" className={styles.subscribeButton}>Subscribe</button>
+      </form>
       <ul className={styles.navLinks}>
         {renderMenuItems(pages)}
       </ul>
