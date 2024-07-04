@@ -1,4 +1,6 @@
 import styles from './about.module.css';
+import { FaInstagram } from 'react-icons/fa';
+
 
 const About = () => {
   const sections = [
@@ -22,6 +24,7 @@ const About = () => {
       jobTitle: 'Founder & Cheif Technical Officer',
       description: 'Neelesh is passionate about artificial intelligence and its applications in everyday life. With a background in computer science, he leads the development of Dermalyze and its technology.',
       image: '/john-doe.jpg', // Replace with actual image path
+      instagram: 'https://instagram.com/cyber_neel'
     },
     {
       name: 'Adway Kulkarni',
@@ -50,6 +53,11 @@ const About = () => {
           <div key={index} className={styles.sectionBox}>
             <img src={member.image} alt={member.name} className={styles.memberImage} />
             <h3>{member.name}</h3>
+            {member.instagram && (
+                <a href={member.instagram} target="_blank" rel="noopener noreferrer">
+                  <FaInstagram />
+                </a>
+              )}
             <p>{member.jobTitle}</p>
             <p>{member.description}</p>
           </div>
