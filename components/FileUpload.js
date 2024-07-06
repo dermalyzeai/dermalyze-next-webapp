@@ -12,7 +12,7 @@ const SingleFileUploader = () => {
   return (
     <>
       <div className="g-col-4 text-center">
-        <label htmlFor="file" className="sr-only">
+        <label htmlFor="file" className="sr-only" style={{textAlign: 'center'}}>
           Choose a file
         </label>
         &nbsp; &nbsp; &nbsp;
