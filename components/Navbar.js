@@ -5,6 +5,7 @@ import styles from './Navbar.module.css';
 const Navbar = () => {
   const [pages, setPages] = useState([]);
   const [email, setEmail] = useState('');
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     fetch('/pages.json')
@@ -74,7 +75,12 @@ const Navbar = () => {
         />
         <button type="submit" className={styles.subscribeButton}>Subscribe</button>
       </form>
-      <ul className={styles.navLinks}>
+      <div className={styles.hamburger} onClick={() => setIsMenuOpen(!isMenuOpen)}>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <ul className={`${styles.navLinks} ${isMenuOpen ? styles.show : ''}`}>
         {renderMenuItems(pages)}
       </ul>
     </nav>
