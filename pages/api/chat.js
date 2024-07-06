@@ -18,7 +18,7 @@ export default async (req, res) => {
             {
               "model": "Meta-Llama-3-8B-Instruct",
               "messages": [
-                {"role": "user", "content": input + " (limit responses to 15 sentences or less.)"},
+                {"role": "user", "content": input + " (limit responses to 15 sentences or less. and return text int he format of contentful rich text)"},
                 {"role": "assistant", "content": "Hi!"}
               ],
               "repetition_penalty": 1.1,
