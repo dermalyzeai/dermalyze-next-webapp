@@ -25,7 +25,7 @@ export default async (req, res) => {
               "temperature": 0.7,
               "top_p": 0.9,
               "top_k": 40,
-              "max_tokens": 256,
+              "max_tokens": 512,
               "stream": false
         }),  
         }
