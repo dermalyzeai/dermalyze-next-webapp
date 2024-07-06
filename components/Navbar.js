@@ -64,6 +64,11 @@ const Navbar = () => {
           <a>Dermalyze</a>
         </Link>
       </div>
+      <div className={styles.hamburger} onClick={() => setIsMenuOpen(!isMenuOpen)}>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
       <form onSubmit={handleSubmit} className={styles.subscriptionForm}>
         <input
           type="email"
@@ -75,11 +80,6 @@ const Navbar = () => {
         />
         <button type="submit" className={styles.subscribeButton}>Subscribe</button>
       </form>
-      <div className={styles.hamburger} onClick={() => setIsMenuOpen(!isMenuOpen)}>
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
       <ul className={`${styles.navLinks} ${isMenuOpen ? styles.show : ''}`}>
         {renderMenuItems(pages)}
       </ul>

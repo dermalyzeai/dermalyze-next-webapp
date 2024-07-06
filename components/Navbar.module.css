@@ -105,7 +105,7 @@
   text-decoration: none;
 }
 
-@media (min-width: 600px) {
+@media (min-width: 1000px) {
   .navbar-list {
     flex-direction: row;
     justify-content: center;
@@ -175,6 +175,44 @@
 
   .subscriptionForm {
     display: none;
+  }
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.hamburger div {
+  width: 25px;
+  height: 3px;
+  background-color: #ffffff;
+  margin: 4px;
+}
+
+@media (max-width: 1000px) {
+  .navLinks {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .navLinks.show {
+    display: flex;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .subscriptionForm {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .emailInput {
+    margin-bottom: 0.5rem;
   }
 }
 
