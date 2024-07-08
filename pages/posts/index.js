@@ -1,27 +1,28 @@
 // pages/posts/index.js
 
-import Link from 'next/link';
-import styles from './posts.module.css';
+import { useState } from 'react';
 import client from '../../utils/contentfulPosts';
+import Search from '../../components/Search';
+import Post from '../../components/Post';
+import styles from './posts.module.css';
 
 export default function Posts({ posts }) {
+  const [filteredPosts, setFilteredPosts] = useState(posts);
+
+  const handleSearch = (query) => {
+    const filtered = posts.filter((post) =>
+      post.fields.title.toLowerCase().includes(query.toLowerCase())
+    );
+    setFilteredPosts(filtered);
+  };
+
   return (
     <div className={styles.container}>
       <h1>Posts</h1>
+      <Search onSearch={handleSearch} />
       <div className={styles.grid}>
-        {posts.map((post) => (
-          <div key={post.sys.id} className={styles.postBox}>
-            <Link href={`/posts/${post.fields.slug}`}>
-              <a>
-                {post.fields.imageUrl && (
-                  <img src={post.fields.imageUrl} alt={post.fields.title} className={styles.postImage} />
-                )}
-                <h2>{post.fields.title}</h2>
-                <p>{new Date(post.fields.date).toLocaleDateString()}</p>
-                <p>{post.fields.description}</p>
-              </a>
-            </Link>
-          </div>
+        {filteredPosts.map((post) => (
+          <Post key={post.sys.id} post={post} />
         ))}
       </div>
     </div>
