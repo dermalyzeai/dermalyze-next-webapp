@@ -1,0 +1,29 @@
+.postBox {
+  border: 1px solid #ddd;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 8px;
+  transition: box-shadow 0.3s ease;
+}
+
+.postBox:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.postImage {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.postTitle {
+  margin: 10px 0;
+}
+
+.postDate {
+  margin: 5px 0;
+}
+
+.postDescription {
+  margin: 5px 0;
+}
