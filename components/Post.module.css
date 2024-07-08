@@ -4,6 +4,8 @@
   margin: 10px;
   border-radius: 8px;
   transition: box-shadow 0.3s ease;
+  text-decoration: none; /* Added this line */
+  color: inherit; /* Added this line */
 }
 
 .postBox:hover {
