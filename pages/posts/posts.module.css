@@ -18,8 +18,27 @@
 }
 
 .grid {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 20px;
   justify-content: center;
+}
+
+.postBox {
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+  cursor: pointer;
+}
+
+.postBox:hover {
+  transform: scale(1.05);
+}
+
+.postImage {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
 }

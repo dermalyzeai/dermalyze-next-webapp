@@ -1,15 +1,16 @@
 .postBox {
   border: 1px solid #ddd;
   padding: 20px;
-  margin: 10px;
   border-radius: 8px;
-  transition: box-shadow 0.3s ease;
-  text-decoration: none; /* Added this line */
-  color: inherit; /* Added this line */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
 }
 
 .postBox:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transform: scale(1.05);
 }
 
 .postImage {
@@ -18,14 +19,7 @@
   border-radius: 8px;
 }
 
-.postTitle {
-  margin: 10px 0;
-}
-
-.postDate {
-  margin: 5px 0;
-}
-
-.postDescription {
-  margin: 5px 0;
+.postBox h2, .postBox p {
+  text-decoration: none;
+  color: inherit;
 }
