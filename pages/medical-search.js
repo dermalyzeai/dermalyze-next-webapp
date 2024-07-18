@@ -13,12 +13,25 @@ const Home = () => {
 
   useEffect(() => {
     
+    
   }, []);
 
   return (
-    <div style={{padding: '12px'}}>
-      <input type="text" id="condition" placeholder="Condition"></input>
-      
+    <div>
+      <h1 style={{ textAlign: 'center' }}>Search Health Data</h1>
+      <div>
+          <a>
+            <input type="text" id="condition" placeholder="Condition"></input>
+          </a>
+          <button
+          type="button"
+          className="btn btn-primary"
+          value="Run Search"
+          onClick={''}
+          >
+          Run Search
+        </button>
+      </div>
     </div>
   );
 };
