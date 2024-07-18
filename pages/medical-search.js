@@ -5,14 +5,16 @@ import Layout from '../components/Layout';
 import Canvas from '../components/Canvas';
 import SingleFileUploader from '../components/FileUpload';
 import SubmitButton from '../components/SubmitButton';
-import BigBlock from '../components/BigBlock';
-import LoadingSpinner from '../components/LoadingSpinner';
 import Link from 'next/link';
 
-const Home = () => {
+const MedSearch = () => {
+  
+  function RuSearch() {
+  const submitClick = () => {
+    console.log("Ran search")
+  };
 
   useEffect(() => {
-    
     
   }, []);
 
@@ -27,7 +29,7 @@ const Home = () => {
           type="button"
           className="btn btn-primary"
           value="Run Search"
-          onClick={''}
+          onClick={RunSearch}
           >
           Run Search
         </button>
@@ -36,4 +38,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default MedSearch
