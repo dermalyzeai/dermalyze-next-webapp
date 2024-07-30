@@ -1,32 +1,44 @@
-import { FaInstagram } from 'react-icons/fa';
+import * as Icon from 'react-bootstrap-icons';
 
-const Footer = () => {
-  return (
-    <footer style={footerStyle}>
-      <p>&copy; {new Date().getFullYear()} Dermalyze AI. All rights reserved.</p>
-      <a href="https://www.instagram.com/dermalyze" target="_blank" rel="noopener noreferrer" style={iconStyle}>
-        <FaInstagram />
+function Footer() {
+  
+  
+  return(
+    <>
+    <div class="p-3"></div>
+  <footer class="bg-dark text-center text-white rounded-3">
+
+  <div class="container p-4 pb-0">
+
+    <section class="mb-4">
+
+      <a class="btn btn-outline-light btn-floating m-1" href="https://boulderbugle.com/my-google-profile-Qr6XopIM" role="button"
+        ><Icon.Google />
       </a>
-    </footer>
+
+
+      <a class="btn btn-outline-light btn-floating m-1" href="https://instagram.com/dermalyze" role="button"
+        ><Icon.Instagram />
+       </a>
+
+
+      <a class="btn btn-outline-light btn-floating m-1" href="https://github.com/dermalyzeai" role="button"
+        ><Icon.Github />
+      </a>
+    </section>
+
+  </div>
+
+
+
+  <div class="text-center p-3 bg-dark" >
+    © &nbsp; {new Date().getFullYear()} Copyright:&nbsp;
+    <a class="text-white" href="#">Dermalyze</a>
+  </div>
+
+</footer>
+
+</>
   );
-};
-
-const footerStyle = {
-  textAlign: 'center',
-  padding: '20px',
-  position: 'relative',
-  left: '0',
-  bottom: '0',
-  width: '100%',
-  backgroundColor: '#333',
-  color: 'white',
-  borderRadius: '15px',
-};
-
-const iconStyle = {
-  color: 'white',
-  marginLeft: '10px',
-  fontSize: '24px',
-};
-
-export default Footer;
+  
+} export default Footer;
