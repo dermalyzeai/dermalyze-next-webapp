@@ -31,8 +31,6 @@ function MyApp({ Component, pageProps }) {
         .then(() => loadScript('https://cdn.jsdelivr.net/npm/onnxjs/dist/onnx.min.js'))
         .then(() => loadScript('./scripts/script.js'))
         .then(() => loadScript('https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js'))
-        .then(() => loadScript('https://clinicaltables.nlm.nih.gov/autocomplete-lhc-versions/19.2.4/autocomplete-lhc.min.js'))
-        .then(() => new Def.Autocompleter.Search('condition','https://clinicaltables.nlm.nih.gov/api/conditions/v3/search'))
  
         .catch((error) => {
           console.error('Error loading scripts:', error);

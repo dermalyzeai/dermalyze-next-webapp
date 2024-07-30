@@ -4,8 +4,6 @@ import styles from './Navbar.module.css';
 
 const Navbar = () => {
   const [pages, setPages] = useState([]);
-  const [email, setEmail] = useState('');
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     fetch('/pages.json')
@@ -13,45 +11,40 @@ const Navbar = () => {
       .then(data => setPages(data));
   }, []);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const formUrl = 'actionURL';
-    const entryField = 'id';
-    const formData = new FormData();
-    formData.append(entryField, email);
-
-    fetch(formUrl, {
-      method: 'POST',
-      mode: 'no-cors',
-      body: formData,
-    }).then(() => {
-      alert('Thanks for subscribing!');
-      setEmail('');
-    }).catch((error) => {
-      console.error('Error:', error);
-    });
-  };
-
-  const renderMenuItems = (items) => {
+  const renderMenuItems = (items, drop=false) => {
     return items.map((item, index) => {
       if (item.test) {
         return null;
       }
       if (item.children) {
         return (
-          <li key={index} className={styles.dropdown}>
-            <span className={styles.dropbtn}>{item.label}</span>
-            <ul className={styles.dropdownContent}>
-              {renderMenuItems(item.children)}
-            </ul>
-          </li>
+          <li className="nav-item dropdown bg-dark">
+              <a
+                className="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdownMenuLink"
+                data-bs-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                {item.label}
+              </a>
+              <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                {renderMenuItems(item.children,true)}
+              </ul>
+            </li>
         );
       }
+      
+      if (drop == true) {
+        return (
+          <li><a className={styles.navItem + " dropdown-item rounded-3"} href={item.path}>{item.label}</a></li>
+        );
+      }
+      
       return (
-        <li key={index}>
-          <Link href={item.path}>
-            <a>{item.label}</a>
-          </Link>
+        <li key={index} className='nav-item'>
+            <a className={styles.navItem + ' nav-link rounded-3'} href={item.path}>{item.label}</a>
         </li>
       );
     });
