@@ -58,32 +58,33 @@ const Navbar = () => {
   };
 
   return (
-    <nav className={styles.navbar}>
-      <div className={styles.logo}>
-        <Link href="/">
-          <a>Dermalyze</a>
-        </Link>
-      </div>
-      <div className={styles.hamburger} onClick={() => setIsMenuOpen(!isMenuOpen)}>
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
-      <form onSubmit={handleSubmit} className={styles.subscriptionForm}>
-        <input
-          type="email"
-          placeholder="Enter your email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-          className={styles.emailInput}
-        />
-        <button type="submit" className={styles.subscribeButton}>Subscribe</button>
-      </form>
-      <ul className={`${styles.navLinks} ${isMenuOpen ? styles.show : ''}`}>
-        {renderMenuItems(pages)}
-      </ul>
-    </nav>
+    <>
+      <nav className="navbar navbar-expand-lg rounded-3 bg-dark navbar-dark">
+        <a className="navbar-brand px-3" href="/">
+        
+          <img className="rounded-2"src="https://cyberneel.github.io/img/CyberNeelLogoNewOutfit1080p-1400x1400.webp" alt="" width="30" height="30" alt=""></img>
+        
+        &nbsp;&nbsp;Dermalyze
+        
+        </a>
+        <button
+          className="navbar-toggler mx-3"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul className="navbar-nav">
+            {renderMenuItems(pages)}
+          </ul>
+        </div>
+      </nav>
+    </>
   );
 };
 

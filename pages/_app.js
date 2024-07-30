@@ -39,9 +39,9 @@ function MyApp({ Component, pageProps }) {
         });
     }
     
-    typeof document !== undefined
-      ? require("bootstrap/dist/js/bootstrap")
-      : null;
+    if (typeof document !== undefined) {
+      require('bootstrap/dist/js/bootstrap');
+    }
   }, [router.events]);
   
   return (
