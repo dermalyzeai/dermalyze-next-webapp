@@ -22,6 +22,7 @@ const Home = () => {
           setLinkHref(`/posts/${newText}`);
         };
       };
+      
     });
 
     if (classificationTextElement) {
