@@ -55,7 +55,7 @@ const Navbar = () => {
       <nav className="navbar navbar-expand-lg rounded-3 bg-dark navbar-dark">
         <a className="navbar-brand px-3" href="/">
         
-          <img className="rounded-2"src="https://cyberneel.github.io/img/CyberNeelLogoNewOutfit1080p-1400x1400.webp" alt="" width="30" height="30" alt=""></img>
+          <img className="rounded-2"src="https://cyberneel.github.io/img/CyberNeelLogoNewOutfit1080p-1400x1400.webp" alt="" width="30" height="30" ></img>
         
         &nbsp;&nbsp;Dermalyze
         

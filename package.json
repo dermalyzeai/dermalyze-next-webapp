@@ -6,6 +6,7 @@
   },
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^15.22.9",
+    "@nextui-org/input": "^2.2.4",
     "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.3",
     "contentful": "^10.12.4",

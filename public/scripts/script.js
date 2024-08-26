@@ -40,10 +40,12 @@ async function runExample(test=true) {
   const imageLoader = new ImageLoader(imageSize, imageSize);
   const imageLoader2 = new ImageLoader(200, 301);
   var imageData = null;
-  if (test)
+  if (test){
       imageData = await imageLoader.getImageData('./acne.jpg');
-  else
+  }
+  else{
       imageData = await imageLoader2.getImageData(document.getElementById('uploadedImg').files[0]);
+  }
   //console.log(document.getElementById('uploadedImg').files[0]);
   // Preprocess the image data to match input dimension requirement, which is 1*3*224*224.
   const width = imageSize;
@@ -75,7 +77,7 @@ export async function RunMain(test=true) {
     ctx.clearRect(0,0,ctx.canvas.width,ctx.canvas.height);
     ctx.putImageData(imgData, 16, 16);
     RunModel(imgData.data, 224, 224);
-  }
+  };
   img.src = URL.createObjectURL(imgFile);
   return "XMLDocument";
 }
@@ -102,7 +104,7 @@ async function RunModel(data, width, height) {
     outputMap = await sessionEczemaPsoriasis.run([inputTensor]);
     outputData = outputMap.values().next().value.data;
     pred = printMatchesEczemaPsoriasis(outputData);
-  }
+  };
   var el = document.getElementById('spinner');
   el.style.display  = 'none';
 }
@@ -152,10 +154,12 @@ function printMatchesMain(data) {
 
 function printMatchesEczemaPsoriasis(data) {
   var predIndex = data.indexOf(Math.max(...data));
-  if(predIndex == 0)
+  if(predIndex == 0){
     predIndex = 1;
-  else
+  }
+  else{
     predIndex = 3
+  }
   console.log(data);
   console.log(skinClassifications[predIndex]);
   document.getElementById('classificationText').innerHTML = skinClassifications[predIndex];

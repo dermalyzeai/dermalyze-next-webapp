@@ -4,7 +4,7 @@ import Head from 'next/head';
 import "bootstrap/dist/css/bootstrap.css";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
-
+import Script from 'next/script';
 function MyApp({ Component, pageProps }) {
   
   const router = useRouter();
@@ -44,13 +44,13 @@ function MyApp({ Component, pageProps }) {
   
   return (
     <>
-    <Head>
-      <script>
+    <Script>
+      <script type="module" src="your-script.js">
         console.log("kk");
       </script>
       <link rel="icon" href="https://github.com/4301e00e-966d-44c8-b913-d06cf7b553b1" type="image/x-icon"/>
       <link href='https://clinicaltables.nlm.nih.gov/autocomplete-lhc-versions/19.2.4/autocomplete-lhc.min.css' rel="stylesheet"/>
-    </Head>
+    </Script>
     <Layout>
       <Component {...pageProps} />
     </Layout>

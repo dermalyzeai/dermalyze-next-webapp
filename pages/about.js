@@ -21,23 +21,39 @@ const About = () => {
   const teamMembers = [
     {
       name: 'Neelesh Chevuri',
-      jobTitle: 'Founder & Cheif Technical Officer',
+      jobTitle: 'Founder & CTO',
       description: 'Neelesh is passionate about artificial intelligence and its applications in everyday life. With a background in computer science, he leads the development of Dermalyze and its technology.',
       image: '/john-doe.jpg', // Replace with actual image path
       instagram: 'https://instagram.com/cyber_neel'
     },
     {
       name: 'Adway Kulkarni',
-      jobTitle: 'Lead Medical Researcher',
+      jobTitle: 'Medical Researcher',
+      description: 'Extremely short',
+      image: 'https://www.instagram.com/budwayk/',
+      instagram: 'https://www.instagram.com/budwayk/'
+       // Replace with actual image path
+    },
+    {
+      name: 'Sameer Agarwal',
+      jobTitle: 'Website Development',
       description: 'Description coming soon...',
-      image: '/jane-smith.jpg', // Replace with actual image path
+      image: 'https://www.instagram.com/sam.eer.agarwal/',
+      instagram: 'https://www.instagram.com/sam.eer.agarwal/', // Replace with actual image path
+    },
+    {
+      name: 'Murtaza Haque',
+      jobTitle: 'Data & Marketing',
+      description: 'On September 11th 2001, this man was in the cockpit of Flight 3281 which crashed into the Second Tower, killing 9000 people.',
+      image: 'https://www.instagram.com/murtazahaque/',
+      instagram: 'https://www.instagram.com/murtazahaque/', // Replace with actual image path
     },
     // Add more team members as needed
   ];
 
   return (
     <div className={styles.container}>
-      <h1 style={{ textAlign: 'center' }}>About Dermalyze</h1>
+      <h1 style={{textAlign: 'center'}}>About Dermalyze</h1>
       <div className={styles.grid}>
         {sections.map((section, index) => (
           <div key={index} className={styles.sectionBox}>
@@ -46,9 +62,33 @@ const About = () => {
           </div>
         ))}
       </div>
-      <div style={{ padding: '5px' }}></div>
-      <h1 style={{ textAlign: 'center' }} id='team'>Meet the Team</h1>
+      <div style={{padding: 5+'px'}}></div>
+      <h1 style={{textAlign: 'center'}} id='team'>Meet the Team</h1>
       <div className={styles.grid}>
+      {teamMembers.map((member, index) => (
+      <div class="card mb-3" style={{ maxWidth: 540+'px'}}>
+        <div class="row g-0">
+          <div class="col-md-4">
+              <img src={member.image} alt={member.name} className={styles.memberImage} />
+          </div>
+        <div class="col-md-6">
+          <div class="card-body">
+            <h5 class="card-title">{member.name}</h5>
+            {member.instagram && (
+                <a href={member.instagram} target="_blank" rel="noopener noreferrer">
+                  <FaInstagram />
+                </a>
+              )}
+            <p>{member.jobTitle}</p>
+            <p>{member.description}</p>
+          </div>
+        </div>
+        </div>
+      </div>
+      
+      ))}
+      </div>
+      {/* <div className={styles.grid}>
         {teamMembers.map((member, index) => (
           <div key={index} className={styles.sectionBox}>
             <img src={member.image} alt={member.name} className={styles.memberImage} />
@@ -62,7 +102,7 @@ const About = () => {
             <p>{member.description}</p>
           </div>
         ))}
-      </div>
+      </div> */}
     </div>
   );
 };

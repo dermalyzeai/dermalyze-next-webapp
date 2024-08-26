@@ -6,8 +6,9 @@ const accessTokenO = process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN
 import { createClient } from 'contentful';
 
 const client = createClient({
-  space: spaceO,
   accessToken: accessTokenO,
+  space: spaceO,
+  
 });
 
 export default client;
