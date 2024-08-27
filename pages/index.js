@@ -9,9 +9,10 @@ import BigBlock from '../components/BigBlock';
 import LoadingSpinner from '../components/LoadingSpinner';
 import Link from 'next/link';
 import Questions from '../components/Questions';
+import { RunMain } from '../public/scripts/script.js';
 const Home = () => {
   const [linkHref, setLinkHref] = useState('');
-
+  const [questions, setQuestions] = useState([]);
   useEffect(() => {
     const classificationTextElement = document.getElementById('classificationText');
 
@@ -35,7 +36,16 @@ const Home = () => {
       };
     };
   }, []);
-
+  const updateQuestionsInParent = (newQuestions) => {
+    setQuestions(newQuestions);
+  };
+  const handleRunMain = async () => {
+    try {
+      await RunMain(false, setQuestions); // Pass setQuestions as the callback
+    } catch (error) {
+      console.error('Error running the AI model:', error);
+    } // Pass updateQuestionsInParent
+  };
   return (
     <div>
       <div style={{ padding: '5px' }}></div>
@@ -55,7 +65,7 @@ const Home = () => {
         <Canvas />
       </div>
       <SingleFileUploader />
-      <SubmitButton />
+      <SubmitButton handleRunMain={handleRunMain}/>
       <LoadingSpinner />
       <div>
         <Link href={linkHref} legacyBehavior>
@@ -66,7 +76,7 @@ const Home = () => {
             </a>
         </Link>
       </div>
-      <Questions />
+      <Questions questions={questions}/>
     </div>
   );
 };

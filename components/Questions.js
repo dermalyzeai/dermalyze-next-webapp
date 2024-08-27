@@ -1,32 +1,53 @@
-import { useState } from 'react';
-function ParentComponent() {
-    const [questions, setQuestions] = useState([]);
-  
-    const updateQuestionsInParent = (newQuestions) => {
-      setQuestions(newQuestions);
-    };
-    Questions(questions)
+import React, { useState } from 'react';
+import { processData } from '../public/scripts/script.js';
+
+
+function Questions({ questions }) {
+  const [formData, setFormData] = useState({});
+
+  // Function to handle changes in any question input
+  const handleChange = (e, index) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [index]: value
+    });
+  };
+
+  // Function to handle form submission
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    processData(formData); // Pass form data to script.js
+    console.log('Form Data Submitted:', formData);
+  };
+    return (
+        <div id = "questions" style =  {{display:'none'}}>
+            <div className="d-flex justify-content-center">
+                <div className=" text-bg  m-3 fs-3" role="status" style={{ width: '69rem' }}>
+                    <p id="Questions">{questions ? ' ': 'No questions available'}</p>
+                </div>
+            </div>
+            <div className="justify-content-center" id="questi" style={{ display: questions ? 'block' : 'none' }}>
+            <form onSubmit={handleSubmit} style = {{padding: '0 20px'}}>
+                {questions && questions.map((question, index) => (
+                    <div className="mb-3" key={index}>
+                        <label htmlFor={`QuestionInput${index}`} className="form-label">{`Question ${index + 1}`}</label>
+                        <input
+                type="text"
+                className="form-control"
+                id={`question${index}`}
+                name={`question${index}`}
+                value={formData[index] || ''}
+                onChange={(e) => handleChange(e, index)}
+                placeholder={`Enter your question ${index + 1}`}
+              />
+                    </div>
+                ))}
+                <button type="submit" className="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    );
 }
-function Questions(){
-    
-    const Qs = [
-        {
-        
-        }
-    ]
-    return(
-    <><div className="d-flex justify-content-center"><div className="badge text-bg-primary text-wrap m-3 fs-3"  role="status"  style =  {{display:'none', width: '69rem'}}>
-    <p id = "Questions" ></p>
-  </div></div>
-  <div  class="justify-content-center" id = "questions" style =  {{display:'none'}}>
-        <div class="mb-3" >
-  <label for="formGroupExampleInput" class="form-label">Example label</label>
-  <input type="text" class="form-control" id="QuestionInput" placeholder="Example input placeholder" />
-</div>
-<div class="mb-3">
-  <label for="formGroupExampleInput2" class="form-label">Another label</label>
-  <input type="text" class="form-control" id="QuestionInput2" placeholder="Another input placeholder" />
-</div>
-</div></>);
-}
+
 export default Questions;

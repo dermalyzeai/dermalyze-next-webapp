@@ -7,10 +7,10 @@ var skinClassifications = {
     '2': 'melanoma or mole',
     '3': 'psoriasis'
 };
-var questions = {
-    'acne': 'acne',
-    'eczema': 'eczema',
-    'melanoma or mole': 'melanoma or mole',
-    'psoriasis': 'psoriasis'
+var quest = {
+    'acne': ["q1","q2"],
+    'eczema': ["q1","q2"],
+    'melanoma or mole': ["q1","q2"],
+    'psoriasis': ["q1","q2"]
 };
 // sourceMappingURL=imagenet.js.map

@@ -1,4 +1,5 @@
 // import * as onnx from 'onnxruntime-node';
+
 // Start of code for Drag and drop
 //const dropContainer = document.getElementById("dropcontainer")
   //const fileInput = document.getElementById("uploadedImg")
@@ -62,7 +63,7 @@ async function runExample(test=true) {
   pred = printMatchesMain(outputData);
 }
 
-export async function RunMain(test=true) {
+export async function RunMain(test=true, updateQuestionsInParent) {
   var el = document.getElementById('spinner');
   el.style.display  = 'block';
   var imgFile = document.getElementById("file").files[0];
@@ -76,13 +77,13 @@ export async function RunMain(test=true) {
     var imgData = ctx.getImageData(16,16,224,224);
     ctx.clearRect(0,0,ctx.canvas.width,ctx.canvas.height);
     ctx.putImageData(imgData, 16, 16);
-    RunModel(imgData.data, 224, 224);
+    RunModel(imgData.data, 224, 224, updateQuestionsInParent);
   };
   img.src = URL.createObjectURL(imgFile);
   return "XMLDocument";
 }
 
-async function RunModel(data, width, height) {
+async function RunModel(data, width, height, updateQuestionsInParent) {
   // Create an ONNX inference session with WebGL backend.
   const sessionMain = new onnx.InferenceSession({ backendHint: 'webgl' });
   const sessionEczemaPsoriasis = new onnx.InferenceSession({ backendHint: 'webgl' });
@@ -99,7 +100,7 @@ async function RunModel(data, width, height) {
   var outputData = outputMap.values().next().value.data;
 
   // Render the output result in html.
-  var pred = printMatchesMain(outputData);
+  var pred = printMatchesMain(outputData, updateQuestionsInParent);
   if(pred == 1 || pred == 3) {
     outputMap = await sessionEczemaPsoriasis.run([inputTensor]);
     outputData = outputMap.values().next().value.data;
@@ -143,29 +144,51 @@ function preprocess(data, width, height) {
   return dataProcessed.data;
 }
   
-function printMatchesMain(data) {
+async function printMatchesMain(data, updateQuestionsInParent) {
   var predIndex = data.indexOf(Math.max(...data));
   console.log(data);
   console.log(skinClassifications[predIndex]);
   document.getElementById('classificationText').innerHTML = skinClassifications[predIndex];
-  if (questions[skinClassifications[predIndex]]!=null){
-    document.getElementById('Questions').innerHTML = questions[skinClassifications[predIndex]]
-    var q = document.getElementById('questions');
-    q.style.display='inline'
+  // if (questions[skinClassifications[predIndex]]!=null){
+  //   document.getElementById('Questions').innerHTML = questions[skinClassifications[predIndex]]
+  //   var q = document.getElementById('questions');
+  //   q.style.display='inline'
+  // }
+  // else{
+  //   document.getElementById('Questions').innerHTML = "hi"
+  //   var q = document.getElementById('questions');
+  //   q.style.display='Block'
+  // }
+  try {
+    const questions = await obtainQuestions(predIndex); // Wait for the promise to resolve
+    if (Array.isArray(questions)) {
+      updateQuestionsInParent(questions); // Now, `questions` is the resolved array
+      var q = document.getElementById('questions');
+      q.style.display='Block'
+      console.log('Questions:', questions.join(', ')); // You can safely use join here
+    } else {
+      console.error('questions is not an array:', questions);
+    }
+  } catch (error) {
+    console.error('Error obtaining questions:', error);
   }
-  else{
-    document.getElementById('Questions').innerHTML = "hi"
-    var q = document.getElementById('questions');
-    q.style.display='Block'
-  }
-  const questions = obtainQuestions(predIndex);
-  updateQuestionsInParent(questions);
   //document.getElementById('classificationTextLink').href = '/posts/' + skinClassifications[predIndex] + '/';
   return predIndex;
 }
 export async function obtainQuestions(predIndex){
-  const questions = questions[skinClassifications[predIndex]];
+  if (quest[skinClassifications[predIndex]]!=null){
+  const questions = quest[skinClassifications[predIndex]];
   return questions;
+  
+  }
+  
+}
+export function processData(data) {
+  // Handle the form data here
+  console.log('Data received in script.js:', data);
+
+  // Example: Do something with the data
+  // For instance, send it to an API or update some internal state
 }
 function printMatchesEczemaPsoriasis(data) {
   var predIndex = data.indexOf(Math.max(...data));
