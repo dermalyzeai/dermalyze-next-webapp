@@ -1,4 +1,4 @@
-
+// import * as onnx from 'onnxruntime-node';
 // Start of code for Drag and drop
 //const dropContainer = document.getElementById("dropcontainer")
   //const fileInput = document.getElementById("uploadedImg")
@@ -148,10 +148,25 @@ function printMatchesMain(data) {
   console.log(data);
   console.log(skinClassifications[predIndex]);
   document.getElementById('classificationText').innerHTML = skinClassifications[predIndex];
+  if (questions[skinClassifications[predIndex]]!=null){
+    document.getElementById('Questions').innerHTML = questions[skinClassifications[predIndex]]
+    var q = document.getElementById('questions');
+    q.style.display='inline'
+  }
+  else{
+    document.getElementById('Questions').innerHTML = "hi"
+    var q = document.getElementById('questions');
+    q.style.display='Block'
+  }
+  const questions = obtainQuestions(predIndex);
+  updateQuestionsInParent(questions);
   //document.getElementById('classificationTextLink').href = '/posts/' + skinClassifications[predIndex] + '/';
   return predIndex;
 }
-
+export async function obtainQuestions(predIndex){
+  const questions = questions[skinClassifications[predIndex]];
+  return questions;
+}
 function printMatchesEczemaPsoriasis(data) {
   var predIndex = data.indexOf(Math.max(...data));
   if(predIndex == 0){

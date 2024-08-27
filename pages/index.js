@@ -8,7 +8,7 @@ import SubmitButton from '../components/SubmitButton';
 import BigBlock from '../components/BigBlock';
 import LoadingSpinner from '../components/LoadingSpinner';
 import Link from 'next/link';
-
+import Questions from '../components/Questions';
 const Home = () => {
   const [linkHref, setLinkHref] = useState('');
 
@@ -22,7 +22,7 @@ const Home = () => {
           setLinkHref(`/posts/${newText}`);
         };
       };
-      
+
     });
 
     if (classificationTextElement) {
@@ -66,6 +66,7 @@ const Home = () => {
             </a>
         </Link>
       </div>
+      <Questions />
     </div>
   );
 };
