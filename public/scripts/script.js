@@ -161,7 +161,8 @@ async function printMatchesMain(data, updateQuestionsInParent) {
   // }
   try {
     const questions = await obtainQuestions(predIndex); // Wait for the promise to resolve
-    if (Array.isArray(questions)) {
+    
+    if (Array.isArray(questions) && questions.length > 0) {
       updateQuestionsInParent(questions); // Now, `questions` is the resolved array
       var q = document.getElementById('questions');
       q.style.display='Block'
@@ -177,11 +178,20 @@ async function printMatchesMain(data, updateQuestionsInParent) {
 }
 export async function obtainQuestions(predIndex){
   if (quest[skinClassifications[predIndex]]!=null){
-  const questions = quest[skinClassifications[predIndex]];
-  return questions;
+  const questionObj = quest[skinClassifications[predIndex]];
+  
+  const formattedQuestions = Object.keys(questionObj).map(key => {
+    return {
+      question: key,
+      options: questionObj[key],
+    };
+  });
+  console.log(formattedQuestions);
+  console.log(Object.entries(formattedQuestions));
+  return formattedQuestions;
   
   }
-  
+  return [];  
 }
 export function processData(data) {
   // Handle the form data here
