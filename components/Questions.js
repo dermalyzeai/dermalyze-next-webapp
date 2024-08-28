@@ -29,23 +29,23 @@ function Questions({ questions }) {
       </div>
       <div className="justify-content-center" id="questi" style={{ display: questions ? 'block' : 'none' }}>
         <form onSubmit={handleSubmit} style = {{padding: '0 20px'}}>
-        {Object.values(questions).map(([questionText, options], index) => (
+        {questions.map((questionKey, index) => (
             <div className="mb-3" key={index}>
               <label htmlFor={`QuestionInput${index}`} className="form-label">
-                {questionText} {/* Display the actual question text */}
+              {questionKey.question} {/* Display the actual question text */}
               </label>
-              {Array.isArray(options) ? (
-                options.map((option, optIndex) => (
+              {Array.isArray(questions) ? (
+                 questionKey.options.map((option, optIndex) => (
                   <div key={optIndex} className="form-check">
                     <input
                       type="radio"
                       className="form-check-input" // Correct class for radio button
-                      id={`${questionText}-${optIndex}`} // Use `questionText` for unique IDs
+                      id={`${questionKey.question}-${optIndex}`} // Use `questionText` for unique IDs
                       name={`question${index}`} // Use a unique name for each question to group options
                       value={option}
                       onChange={(e) => handleChange(e, index)}
                     />
-                    <label className="form-check-label" htmlFor={`${questionText}-${optIndex}`}>
+                    <label className="form-check-label" htmlFor={`${questionKey.question}-${optIndex}`}>
                       {option}
                     </label>
                   </div>

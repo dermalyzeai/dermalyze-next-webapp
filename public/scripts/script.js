@@ -179,11 +179,11 @@ async function printMatchesMain(data, updateQuestionsInParent) {
 export async function obtainQuestions(predIndex){
   if (quest[skinClassifications[predIndex]]!=null){
   const questionObj = quest[skinClassifications[predIndex]];
-  
-  const formattedQuestions = Object.keys(questionObj).map(key => {
+  console.log(' before Formatting' + Object.entries(questionObj));
+  const formattedQuestions = Object.entries(questionObj).map(([question, options]) => {
     return {
-      question: key,
-      options: questionObj[key],
+      question: question,   // The key is the question text
+      options: options,     // The value is the array of options
     };
   });
   console.log(formattedQuestions);
