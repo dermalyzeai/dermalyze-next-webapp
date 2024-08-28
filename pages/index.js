@@ -10,6 +10,7 @@ import LoadingSpinner from '../components/LoadingSpinner';
 import Link from 'next/link';
 import Questions from '../components/Questions';
 import { RunMain } from '../public/scripts/script.js';
+import Dropdown from '../components/Dropdown.js';
 const Home = () => {
   const [linkHref, setLinkHref] = useState('');
   const [questions, setQuestions] = useState([]);
@@ -67,6 +68,7 @@ const Home = () => {
       <SingleFileUploader />
       <SubmitButton handleRunMain={handleRunMain}/>
       <LoadingSpinner />
+      <Dropdown style = {{display: 'Block'}}/>
       <div>
         <Link href={linkHref} legacyBehavior>
           <a>
