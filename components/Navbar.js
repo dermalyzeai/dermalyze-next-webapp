@@ -18,7 +18,7 @@ const Navbar = () => {
       }
       if (item.children) {
         return (
-          <li className="ps-3 nav-item dropdown bg-dark">
+          <li className="ps-3 nav-item dropdown bg-dark" key={index}>
               <a
                 className="nav-link dropdown-toggle"
                 href="#"
@@ -26,6 +26,7 @@ const Navbar = () => {
                 data-bs-toggle="dropdown"
                 aria-haspopup="true"
                 aria-expanded="false"
+                key = {index}
               >
                 {item.label}
               </a>
@@ -38,7 +39,7 @@ const Navbar = () => {
       
       if (drop == true) {
         return (
-          <li><a className={styles.navItem + " ps-3 dropdown-item rounded-3"} href={item.path}>{item.label}</a></li>
+          <li key = {index}><a className={styles.navItem + " ps-3 dropdown-item rounded-3"} href={item.path}>{item.label}</a></li>
         );
       }
       

@@ -23,7 +23,7 @@ function MyApp({ Component, pageProps }) {
       };
 
       // Load scripts in sequence
-      loadScript('./scripts/classifications.js')
+        loadScript('./scripts/classifications.js')
         .then(() => {var numClasses = skinClassifications.length})
         .then(() => loadScript('./scripts/image-loader.js'))
         .then(() => loadScript('./scripts/jquery.min.js'))
