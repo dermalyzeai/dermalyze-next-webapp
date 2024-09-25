@@ -8,10 +8,12 @@ import SubmitButton from '../components/SubmitButton';
 import BigBlock from '../components/BigBlock';
 import LoadingSpinner from '../components/LoadingSpinner';
 import Link from 'next/link';
-
+import Questions from '../components/Questions';
+import { RunMain } from '../public/scripts/script.js';
+import Dropdown from '../components/Dropdown.js';
 const Home = () => {
   const [linkHref, setLinkHref] = useState('');
-
+  const [questions, setQuestions] = useState([]);
   useEffect(() => {
     const classificationTextElement = document.getElementById('classificationText');
 
@@ -20,21 +22,31 @@ const Home = () => {
         if (mutation.type === 'childList') {
           const newText = mutation.target.innerHTML;
           setLinkHref(`/posts/${newText}`);
-        }
-      }
+        };
+      };
+
     });
 
     if (classificationTextElement) {
       observer.observe(classificationTextElement, { childList: true });
-    }
+    };
 
     return () => {
       if (classificationTextElement) {
         observer.disconnect();
-      }
+      };
     };
   }, []);
-
+  const updateQuestionsInParent = (newQuestions) => {
+    setQuestions(newQuestions);
+  };
+  const handleRunMain = async () => {
+    try {
+      await RunMain(false, setQuestions); // Pass setQuestions as the callback
+    } catch (error) {
+      console.error('Error running the AI model:', error);
+    } // Pass updateQuestionsInParent
+  };
   return (
     <div>
       <div style={{ padding: '5px' }}></div>
@@ -54,17 +66,19 @@ const Home = () => {
         <Canvas />
       </div>
       <SingleFileUploader />
-      <SubmitButton />
+      <SubmitButton handleRunMain={handleRunMain}/>
       <LoadingSpinner />
+      <Dropdown style = {{display: 'Block'}}/>
       <div>
-        <Link href={linkHref}>
+        <Link href={linkHref} legacyBehavior>
           <a>
             <h2 style={{ textAlign: 'center' }} id="classificationText">
               Run our AI for a result!
             </h2>
-          </a>
+            </a>
         </Link>
       </div>
+      <Questions questions={questions}/>
     </div>
   );
 };

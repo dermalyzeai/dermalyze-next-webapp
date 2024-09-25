@@ -1,6 +1,6 @@
 .container {
-  padding: 20px;
-  max-width: 1200px;
+  padding: 50px;
+  max-width: 1300px;
   margin: 0 auto;
 }
 
@@ -14,9 +14,9 @@
 .sectionBox {
   background-color: #f5f5f5;
   padding: 20px;
-  border-radius: 15px;
+  border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   /*border: 2px solid #ffcc00;*/
-  width: calc(33.333% - 40px); /* Adjust width to account for gap */
+  width: calc(33.333% - 90px); /* Adjust width to account for gap */
   box-sizing: border-box;
 }

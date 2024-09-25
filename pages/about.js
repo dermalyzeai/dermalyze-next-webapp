@@ -1,5 +1,6 @@
 import styles from './about.module.css';
 import { FaInstagram } from 'react-icons/fa';
+import {FaGithub} from 'react-icons/fa';
 
 
 const About = () => {
@@ -21,23 +22,43 @@ const About = () => {
   const teamMembers = [
     {
       name: 'Neelesh Chevuri',
-      jobTitle: 'Founder & Cheif Technical Officer',
+      jobTitle: 'Founder & CTO',
       description: 'Neelesh is passionate about artificial intelligence and its applications in everyday life. With a background in computer science, he leads the development of Dermalyze and its technology.',
       image: '/john-doe.jpg', // Replace with actual image path
-      instagram: 'https://instagram.com/cyber_neel'
+      instagram: 'https://instagram.com/cyber_neel',
+      github: 'https://github.com/cyberneel',
     },
     {
       name: 'Adway Kulkarni',
-      jobTitle: 'Lead Medical Researcher',
+      jobTitle: 'Medical Researcher',
+      description: 'Extremely short',
+      image: 'https://www.instagram.com/budwayk/',
+      instagram: 'https://www.instagram.com/budwayk/',
+    
+       // Replace with actual image path
+    },
+    {
+      name: 'Sameer Agarwal',
+      jobTitle: 'Website Development',
       description: 'Description coming soon...',
-      image: '/jane-smith.jpg', // Replace with actual image path
+      image: 'https://www.instagram.com/sam.eer.agarwal/',
+      instagram: 'https://www.instagram.com/sam.eer.agarwal/', // Replace with actual image path
+      github: 'https://github.com/Elitelord',
+    },
+    {
+      name: 'Murtaza Haque',
+      jobTitle: 'Data & Marketing',
+      description: 'Description coming soon...',
+      image: 'https://www.instagram.com/murtazahaque/',
+      instagram: 'https://www.instagram.com/murtazahaque/', // Replace with actual image path
+      github: 'https://github.com/TheDarkLynx786',
     },
     // Add more team members as needed
   ];
 
   return (
     <div className={styles.container}>
-      <h1 style={{ textAlign: 'center' }}>About Dermalyze</h1>
+      <h1 style={{textAlign: 'center'}}>About Dermalyze</h1>
       <div className={styles.grid}>
         {sections.map((section, index) => (
           <div key={index} className={styles.sectionBox}>
@@ -46,9 +67,38 @@ const About = () => {
           </div>
         ))}
       </div>
-      <div style={{ padding: '5px' }}></div>
-      <h1 style={{ textAlign: 'center' }} id='team'>Meet the Team</h1>
+      <div style={{padding: 5+'px'}}></div>
+      <h1 style={{textAlign: 'center'}} id='team'>Meet the Team</h1>
       <div className={styles.grid}>
+      {teamMembers.map((member, index) => (
+      <div className="card mb-3" key = {index} style={{ maxWidth: 540+'px'}}>
+        <div className="row g-0">
+          <div className="col-md-4">
+              <img src={member.image} alt={member.name} className={styles.memberImage} />
+          </div>
+        <div className="col-md-6">
+          <div className="card-body">
+            <h5 className="card-title">{member.name}</h5>
+            {member.instagram && (
+                <a href={member.instagram} target="_blank" rel="noopener noreferrer">
+                  <FaInstagram />
+                </a>
+              )}
+            {member.github && (
+              <a href={member.github} target = "_blank" rel = "noopener noreferrer">
+                  <FaGithub />
+              </a>
+            )}
+            <p>{member.jobTitle}</p>
+            <p>{member.description}</p>
+          </div>
+        </div>
+        </div>
+      </div>
+      
+      ))}
+      </div>
+      {/* <div className={styles.grid}>
         {teamMembers.map((member, index) => (
           <div key={index} className={styles.sectionBox}>
             <img src={member.image} alt={member.name} className={styles.memberImage} />
@@ -62,7 +112,7 @@ const About = () => {
             <p>{member.description}</p>
           </div>
         ))}
-      </div>
+      </div> */}
     </div>
   );
 };

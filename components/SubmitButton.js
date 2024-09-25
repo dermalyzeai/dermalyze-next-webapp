@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
 import { RunMain } from '../public/scripts/script.js';
 
-function SubmitButton() {
+function SubmitButton({ handleRunMain }) {
   const submitClick = () => {
     var x;
     x = RunMain(false);
+    handleRunMain
   };
 
   useEffect(() => {
@@ -31,7 +32,7 @@ function SubmitButton() {
         type="button"
         className="btn btn-primary"
         value="Run Dermalyze"
-        onClick={submitClick}
+        onClick={handleRunMain}
       >
         Run Dermalyze
       </button>
