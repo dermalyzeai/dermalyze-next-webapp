@@ -3,9 +3,10 @@
  */
 var skinClassifications = {
     '0': 'acne',
-    '1': 'eczema',
-    '2': 'melanoma or mole',
-    '3': 'psoriasis'
+    '1': 'basal',
+    '2': 'eczema',
+    '3': 'melanoma or mole',
+    '4': 'monkey pox'
 };
 var quest = {
     'acne': {
