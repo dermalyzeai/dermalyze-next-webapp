@@ -33,7 +33,7 @@ export default function Dropdown(){
                 </h2>
                 <div id="collapseOne" className="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                     <div className="accordion-body">
-                        <form onSubmit={handleSubmit} classNameName = "px-4 py-3">
+                        <form onSubmit={handleSubmit} className = "px-4 py-3">
                             {Demographics.map((questionObj, index)=>(
                                 <div className="mb-3" key = {index}>
                                     <label htmlFor={`QuestionInput${index}`} className="form-label">{questionObj.question}</label>
