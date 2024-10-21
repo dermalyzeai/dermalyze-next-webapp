@@ -34,7 +34,7 @@ async function runExample(test=true) {
   const sessionEczemaPsoriasis = new onnx.InferenceSession({ backendHint: 'webgl' });
 
   // Load an ONNX model. This model is Resnet18 that takes a 1*3*224*224 image and classifies it.
-  await sessionMain.loadModel("../models/dermalyze-ai-resnet-ft-4.onnx");
+  await sessionMain.loadModel("../models/skin_disease_mobilenetv3.onnx");
   await sessionEczemaPsoriasis.loadModel("../models/dermalyze-ai-resnet-ft-4_eczemaVSpsoriasis-EVAL.onnx");
 
   // Load image.
