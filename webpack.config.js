@@ -7,4 +7,19 @@ module.exports = {
   module: {
     rules: [{ test: /\.node$/, use: 'node-loader' }],
   },
+  node: {
+    fs: "empty"
+},
+};
+const nextConfig = {
+  reactStrictMode: true,
+  webpack: (config, options) => {
+    if (options.isServer) {
+      return config
+    }
+    else {
+      config.resolve.fallback.fs = false
+      return config
+    }
+  }
 };

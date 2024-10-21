@@ -11,6 +11,7 @@ import Link from 'next/link';
 import Questions from '../components/Questions';
 import { RunMain } from '../public/scripts/script.js';
 import Dropdown from '../components/Dropdown.js';
+import { makeInference } from '../utils/predict.js';
 const Home = () => {
   const [linkHref, setLinkHref] = useState('');
   const [questions, setQuestions] = useState([]);
@@ -42,7 +43,7 @@ const Home = () => {
   };
   const handleRunMain = async () => {
     try {
-      await RunMain(false, setQuestions); // Pass setQuestions as the callback
+      await makeInference("assets\\test-images\\acne.jpg")//RunMain(false, setQuestions); // Pass setQuestions as the callback
     } catch (error) {
       console.error('Error running the AI model:', error);
     } // Pass updateQuestionsInParent
