@@ -31,7 +31,7 @@ const About = () => {
     {
       name: 'Adway Kulkarni',
       jobTitle: 'Medical Researcher',
-      description: 'Extremely short',
+      description: 'Adway is passionate about the medical field and he spends a lot of time researching diseases and remedies. Adway leads the medical side of Dermalyze, researching common skin diseases and writing informative posts.',
       image: 'https://www.instagram.com/budwayk/',
       instagram: 'https://www.instagram.com/budwayk/',
     
@@ -40,7 +40,7 @@ const About = () => {
     {
       name: 'Sameer Agarwal',
       jobTitle: 'Website Development',
-      description: 'Description coming soon...',
+      description: 'Sameer is passionate about computer science and developing web applications. At Dermalyze, he leads the development of the website, implementing the AI model and other critical features.',
       image: 'https://www.instagram.com/sam.eer.agarwal/',
       instagram: 'https://www.instagram.com/sam.eer.agarwal/', // Replace with actual image path
       github: 'https://github.com/Elitelord',
@@ -48,7 +48,7 @@ const About = () => {
     {
       name: 'Murtaza Haque',
       jobTitle: 'Data & Marketing',
-      description: 'Description coming soon...',
+      description: 'Murtaza is passionate about mathematics and machine learning, he spends time researching machine learning techniques. Murtaza has compiled large portions of the dataset which Dermalyze uses.',
       image: 'https://www.instagram.com/murtazahaque/',
       instagram: 'https://www.instagram.com/murtazahaque/', // Replace with actual image path
       github: 'https://github.com/TheDarkLynx786',
