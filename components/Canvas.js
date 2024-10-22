@@ -20,8 +20,8 @@ const Canvas = ({ width, height }) => {
 }
 
 Canvas.defaultProps = {
-  width: 256,
-  height: 256
+  width: 224,
+  height: 224
 };
 
 export default Canvas;
