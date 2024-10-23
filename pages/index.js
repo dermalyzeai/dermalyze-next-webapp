@@ -12,6 +12,16 @@ import Questions from '../components/Questions';
 import Dropdown from '../components/Dropdown.js';
 import * as tf from '@tensorflow/tfjs';
 
+var skinClassifications = {
+  '0': 'Acne',
+  '1': 'Basal',
+  '2': 'Eczema',
+  '3': 'Hives',
+  '4': 'Melanoma or Mole',
+  '5': 'Monkey Pox',
+  '6': 'Healthy'
+};
+
 const Home = () => {
   const [linkHref, setLinkHref] = useState('');
   const [questions, setQuestions] = useState([]);
@@ -88,12 +98,16 @@ const Home = () => {
         const prediction = model.predict(imageTensor);
   
         const predictedClass = tf.argMax(prediction, 1).dataSync()[0];
+        const predictedDisease = skinClassifications[predictedClass];
         const confidence = prediction.max().dataSync()[0];
         console.log(prediction.dataSync());
+        console.log(predictedClass);
+        console.log(predictedDisease);
+        console.log((confidence * 100).toFixed(2));
   
         // Update the UI with the result
         const classificationTextElement = document.getElementById('classificationText');
-        classificationTextElement.innerHTML = `Prediction: ${predictedClass} (Confidence: ${(confidence * 100).toFixed(2)}%)`;
+        classificationTextElement.innerHTML = `Prediction: ${predictedDisease}`; //(Confidence: ${(confidence * 100).toFixed(2)}%)
   
         el.style.display = 'none';
       };
