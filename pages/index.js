@@ -84,7 +84,7 @@ const Home = () => {
           </a>
         </Link>
       </div>
-      {/* <Questions questions={questions} /> */}
+      <Questions questions={questions} />
     </div>
   );
 };

@@ -1,7 +1,8 @@
 import * as tf from '@tensorflow/tfjs';
 import { processData } from './questionHelper';
-
-var skinClassifications = {
+import { obtainQuestions } from './questionHelper';
+// import { updateQuestionsInParent } from '../index.js';
+export var skinClassifications = {
     '0': 'Acne',
     '1': 'Basal',
     '2': 'Eczema',
@@ -10,9 +11,86 @@ var skinClassifications = {
     '5': 'Monkey Pox',
     '6': 'Healthy'
   };
+export var quest = {
+    'Acne/Eczema': {
+        "How does you skin feel": ['Oily and Greasy', 'Dry and Flaky'],
+        "What type of bumps do you experience?": ['Pimples with pus or blackheads', 'Itchy red patches or blisters'],
+        "Where do the bumps mostly appear?": ['Face, chest, or back', 'Elbows, knees, or hands'],
+        "How often do you experience flare-ups?": ['Mostly during teenage years or hormonal changes', 'At any age, often triggered by weather or allergens'],
+        "How does your skin react to moisturizers?": ['Makes my skin more oily or causes breakouts', 'Helps soothe dryness or irritation'],
+        
+    },
+    'eczema': {
+        "q1": ['o1', 'o2'],
+        "q2": ['o1', 'o2']
+    },
+    'melanoma or mole': {
+        "q1": ['o1', 'o2'],
+        "q2": ['o1', 'o2']
+    },
+    'psoriasis': {
+        "q1": ['o1', 'o2'],
+        "q2": ['o1', 'o2']
+    }
+};
 
+export var responses = {
+    'Acne/Eczema':{
+        "0" : {
+            '0': '1',
+            '1': '2'
+        },
+        "1" : {
+            '0': '1',
+            '1': '2'
+        },
+        "2" : {
+            '0': '1',
+            '1': '2'
+        },
+        "3" : {
+            '0': '1',
+            '1': '2'
+        },
+        "4" : {
+            '0': '1',
+            '1': '2'
+        }
+       
+    },
+    'eczema':{
+        "q1" : {
+            'o1': 'r1',
+            'o2': 'r2'
+        },
+        "q2" : {
+            'o1': 'r1',
+            'o2': 'r2'
+        }
+    },
+    'melanoma or mole':{
+        "q1" : {
+            'o1': 'r1',
+            'o2': 'r2'
+        },
+        "q2" : {
+            'o1': 'r1',
+            'o2': 'r2'
+        }
+    },
+    'psoriasis':{
+        "q1" : {
+            'o1': 'r1',
+            'o2': 'r2'
+        },
+        "q2" : {
+            'o1': 'r1',
+            'o2': 'r2'
+        }
+    }
+}
 
-export async function RunMainPrediction() {
+export async function RunMainPrediction(updateQuestionsInParent) {
     try {
       var el = document.getElementById('spinner');
       el.style.display = 'block';
@@ -57,11 +135,11 @@ export async function RunMainPrediction() {
         const prediction = model.predict(imageTensor);
   
         const predictedClass = tf.argMax(prediction, 1).dataSync()[0];
-        const secondPredictedClass = tf.argMax(prediction, 1).dataSync()[1];
+        const secondPredictedClass = tf.argMax(prediction, 1).dataSync()[0];
         const predictedDisease = skinClassifications[predictedClass];
         const secondPredictedDisease = skinClassifications[secondPredictedClass];
         const confidence = prediction.max().dataSync()[0];
-        const confidence2 = prediction.max().dataSync()[1];
+        const confidence2 = prediction.max().dataSync()[0];
         console.log(prediction.dataSync());
         console.log(predictedClass);
         console.log(predictedDisease);
@@ -71,12 +149,29 @@ export async function RunMainPrediction() {
         const classificationTextElement = document.getElementById('classificationText');
         classificationTextElement.innerHTML = `Prediction: ${predictedDisease}`; //(Confidence: ${(confidence * 100).toFixed(2)}%)
         
-        if (confidence <= 0.85 && predictedDisease == 'Eczema' || predictedDisease == 'Acne') {
+        if ((confidence * 100).toFixed(2) <= 85 && (predictedDisease == 'Eczema' || predictedDisease == 'Acne')) {
             classificationTextElement.innerHTML = `Prediction: ${predictedDisease} (Confidence: ${(confidence * 100).toFixed(2)}%)<br>Possible: ${secondPredictedDisease} Confidence: (${(confidence2 * 100).toFixed(2)}%)`;
+        
+            //Getting Questions
+            try {
+            const questions = await obtainQuestions(predictedClass,secondPredictedClass); // Wait for the promise to resolve
+          
+            if (Array.isArray(questions) && questions.length > 0) {
+              updateQuestionsInParent(questions); // Now, `questions` is the resolved array
+              var q = document.getElementById('questions');
+              q.style.display='Block'
+              console.log('Questions:', questions.join(', ')); // You can safely use join here
+            } else {
+              console.error('questions is not an array:', questions);
+            }
+            } catch (error) {
+            console.error('Error obtaining questions:', error);
+            }          
         }
-
+        
         el.style.display = 'none';
       };
+
   
     } catch (error) {
       console.error('Error running the AI model:', error);
