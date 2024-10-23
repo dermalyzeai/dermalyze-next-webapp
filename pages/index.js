@@ -68,6 +68,7 @@ const Home = () => {
           <img src="/DermalyzeLogo.png" alt="Dermalyze Logo" style={{ }} />
         </div>
       </div>
+      <hr></hr>
       <h1 style={{ textAlign: 'center' }}>Skin Health AI</h1>
       <div style={{ textAlign: 'center' }}>
         <Canvas />

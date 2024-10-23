@@ -6,7 +6,7 @@ const Layout = ({ children }) => {
   return (
     <>
     <ParticlesBackground />
-    <div style={{ padding: '.25rem' }}>
+    <div className="background-color" style={{ padding: '.25rem' }}>
       <Navbar />
       <main>{children}</main>
       <Footer />
