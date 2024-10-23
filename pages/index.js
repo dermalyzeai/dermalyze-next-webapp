@@ -16,7 +16,7 @@ import { RunMainPrediction } from '../utils/predictionHelper.js';
 const Home = () => {
   const [linkHref, setLinkHref] = useState('');
   const [questions, setQuestions] = useState([]);
-  
+  const [quizTitle, setQuizTitle]=useState([]);
   useEffect(() => {
     const classificationTextElement = document.getElementById('classificationText');
 
@@ -40,8 +40,9 @@ const Home = () => {
     };
   }, []);
 
-  const updateQuestionsInParent = (newQuestions) => {
+  const updateQuestionsInParent = (newQuestions,newQuizTitle) => {
     setQuestions(newQuestions);
+    setQuizTitle(newQuizTitle);
   };
 
   const handleRunMain = async () => {
@@ -84,7 +85,7 @@ const Home = () => {
           </a>
         </Link>
       </div>
-      <Questions questions={questions} />
+      <Questions questions={questions} quizTitle={quizTitle} />
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from 'react';
-import { processData } from '../utils/questionHelper.js';
+import { processDemographicData } from '../utils/questionHelper.js';
 
 export default function Dropdown(){
     const [formData, setFormData] = useState({});
@@ -12,7 +12,7 @@ export default function Dropdown(){
       };
     const handleSubmit = (e) => {
         e.preventDefault();
-        processData(formData); // Pass form data to script.js
+        processDemographicData(formData); // Pass form data to script.js
         console.log('Form Data Submitted:', formData);
     };
     var Demographics= [

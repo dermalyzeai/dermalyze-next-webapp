@@ -1,4 +1,4 @@
-import { skinClassifications, quest } from './predictionHelper';
+import { skinClassifications, quest, responses} from './predictionHelper';
 
 export async function obtainQuestions(predIndex, predIndexSecondary){
     const predDisease = skinClassifications[predIndex];
@@ -6,7 +6,7 @@ export async function obtainQuestions(predIndex, predIndexSecondary){
 
     console.log('Primary Prediction:', predDisease);
     console.log('Secondary Prediction:', predDiseaseSecondary);
-    
+
     if(skinClassifications[predIndex]<skinClassifications[predIndexSecondary]){
         const predDisease = skinClassifications[predIndexSecondary];
         const predDiseaseSecondary = skinClassifications[predIndex];
@@ -14,8 +14,8 @@ export async function obtainQuestions(predIndex, predIndexSecondary){
         predIndex=predIndexSecondary;
         predIndexSecondary=temp;
     }
-    if (quest[predDisease+'/'+predDiseaseSecondary]!=null){
-        const questionObj = quest[predDisease+'/'+predDiseaseSecondary];
+    if (quest[predDisease+' or '+predDiseaseSecondary]!=null){
+        const questionObj = quest[predDisease+' or '+predDiseaseSecondary];
         console.log(' before Formatting' + Object.entries(questionObj));
         const formattedQuestions = Object.entries(questionObj).map(([question, options]) => {
             return {
@@ -30,10 +30,14 @@ export async function obtainQuestions(predIndex, predIndexSecondary){
     return [];  
 }
 
-export function processData(data) {
+export function processDemographicData(data) {
     // Handle the form data here
-    console.log('Data received in script.js:', data);
+    console.log('Demographic data received in script.js:', data);
   
     // Example: Do something with the data
     // For instance, send it to an API or update some internal state
   }
+export function processData(data, quizTitle){
+    console.log('Form data received in script.js:', data, quizTitle);
+    const valueTable = responses[quizTitle];
+}

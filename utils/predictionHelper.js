@@ -12,7 +12,7 @@ export var skinClassifications = {
     '6': 'Healthy'
   };
 export var quest = {
-    'Acne/Eczema': {
+    'Acne or Eczema': {
         "How does you skin feel": ['Oily and Greasy', 'Dry and Flaky'],
         "What type of bumps do you experience?": ['Pimples with pus or blackheads', 'Itchy red patches or blisters'],
         "Where do the bumps mostly appear?": ['Face, chest, or back', 'Elbows, knees, or hands'],
@@ -35,7 +35,7 @@ export var quest = {
 };
 
 export var responses = {
-    'Acne/Eczema':{
+    'Acne or Eczema':{
         "0" : {
             '0': '1',
             '1': '2'
@@ -168,6 +168,22 @@ export async function RunMainPrediction(updateQuestionsInParent) {
             console.error('Error obtaining questions:', error);
             }          
         }
+        //Delete this code after
+        try {
+          const questions = await obtainQuestions(0,2); // Wait for the promise to resolve
+        
+          if (Array.isArray(questions) && questions.length > 0) {
+            const title = skinClassifications[0] + ' or ' + skinClassifications[2];
+            updateQuestionsInParent(questions, title); // Now, `questions` is the resolved array
+            var q = document.getElementById('questions');
+            q.style.display='Block'
+            console.log('Questions:', questions.join(', ')); // You can safely use join here
+          } else {
+            console.error('questions is not an array:', questions);
+          }
+          } catch (error) {
+          console.error('Error obtaining questions:', error);
+          }          
         
         el.style.display = 'none';
       };

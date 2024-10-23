@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { processData } from '../utils/questionHelper';
 
 
-function Questions({ questions }) {
+function Questions({ questions, quizTitle }) {
   const [formData, setFormData] = useState({});
 
   // Function to handle changes in any question input
@@ -17,8 +17,8 @@ function Questions({ questions }) {
   // Function to handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    processData(formData); // Pass form data to script.js
-    console.log('Form Data Submitted:', formData);
+    processData(formData, quizTitle); // Pass form data to script.js
+    console.log('Form Data Submitted:', formData, quizTitle);
   };
   return (
     <div id = "questions" style =  {{display:'none'}}>
@@ -28,6 +28,7 @@ function Questions({ questions }) {
         </div>
       </div>
       <div className="justify-content-center" id="questi" style={{ display: questions ? 'block' : 'none' }}>
+        <div><h1>Here are a few extra questions to help decide if your skin condition is {quizTitle}</h1></div>
         <form onSubmit={handleSubmit} style = {{padding: '0 20px'}}>
         {questions.map((questionKey, index) => (
             <div className="mb-3" key={index}>
