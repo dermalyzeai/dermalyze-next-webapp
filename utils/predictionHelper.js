@@ -131,16 +131,28 @@ export async function RunMainPrediction(updateQuestionsInParent) {
   
         // Step 3: Load the model and make the prediction
         const model = await tf.loadLayersModel('dermalyze_tensorflow_js/model.json');
-  
-        const prediction = model.predict(imageTensor);
-        const predictedClass = tf.argMax(prediction, 1).dataSync()[0];
-        const confidence = prediction.max().dataSync()[0];
-        const predictedDisease = skinClassifications[predictedClass];
 
-        console.log(prediction.dataSync());
-        console.log(predictedClass);
-        console.log(predictedDisease);
-        console.log((confidence * 100).toFixed(2));
+        const prediction = model.predict(imageTensor);
+        const predictionArray = prediction.dataSync();
+        const sortedIndices = Array.from(predictionArray.keys()).sort((a, b) => predictionArray[b] - predictionArray[a]);
+
+        const predictedClass = sortedIndices[0];
+        const secondPredictedClass = sortedIndices[1];
+
+        const confidence = predictionArray[predictedClass];
+        const secondConfidence = predictionArray[secondPredictedClass];
+
+        const predictedDisease = skinClassifications[predictedClass];
+        const secondPredictedDisease = skinClassifications[secondPredictedClass];
+
+        console.log("Prediction array:", predictionArray);
+        console.log("Predicted class index:", predictedClass);
+        console.log("Predicted disease:", predictedDisease);
+        console.log("Confidence (%):", (confidence * 100).toFixed(2));
+
+        console.log("Second predicted class index:", secondPredictedClass);
+        console.log("Second predicted disease:", secondPredictedDisease);
+        console.log("Second confidence (%):", (secondConfidence * 100).toFixed(2));
   
         // Update the UI with the result
         const classificationTextElement = document.getElementById('classificationText');
