@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { processData } from '../public/scripts/script.js';
+import { processData } from '../utils/questionHelper';
 
 
 function Questions({ questions }) {

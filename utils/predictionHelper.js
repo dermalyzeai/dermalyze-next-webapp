@@ -1,4 +1,5 @@
 import * as tf from '@tensorflow/tfjs';
+import { processData } from './questionHelper';
 
 var skinClassifications = {
     '0': 'Acne',
@@ -56,8 +57,11 @@ export async function RunMainPrediction() {
         const prediction = model.predict(imageTensor);
   
         const predictedClass = tf.argMax(prediction, 1).dataSync()[0];
+        const secondPredictedClass = tf.argMax(prediction, 1).dataSync()[1];
         const predictedDisease = skinClassifications[predictedClass];
+        const secondPredictedDisease = skinClassifications[secondPredictedClass];
         const confidence = prediction.max().dataSync()[0];
+        const confidence2 = prediction.max().dataSync()[1];
         console.log(prediction.dataSync());
         console.log(predictedClass);
         console.log(predictedDisease);
@@ -66,7 +70,11 @@ export async function RunMainPrediction() {
         // Update the UI with the result
         const classificationTextElement = document.getElementById('classificationText');
         classificationTextElement.innerHTML = `Prediction: ${predictedDisease}`; //(Confidence: ${(confidence * 100).toFixed(2)}%)
-  
+        
+        if (confidence <= 0.85 && predictedDisease == 'Eczema' || predictedDisease == 'Acne') {
+            classificationTextElement.innerHTML = `Prediction: ${predictedDisease} (Confidence: ${(confidence * 100).toFixed(2)}%)<br>Possible: ${secondPredictedDisease} Confidence: (${(confidence2 * 100).toFixed(2)}%)`;
+        }
+
         el.style.display = 'none';
       };
   
