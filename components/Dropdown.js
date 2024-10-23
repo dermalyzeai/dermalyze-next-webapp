@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from 'react';
-import { processData } from '../public/scripts/script.js';
+import { processData } from '../utils/questionHelper.js';
 
 export default function Dropdown(){
     const [formData, setFormData] = useState({});
