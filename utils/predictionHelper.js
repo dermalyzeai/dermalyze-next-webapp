@@ -2,7 +2,7 @@ import * as tf from '@tensorflow/tfjs';
 import { processData } from './questionHelper';
 import { obtainQuestions } from './questionHelper';
 // import { updateQuestionsInParent } from '../index.js';
-var skinClassifications = {
+export var skinClassifications = {
     '0': 'Acne',
     '1': 'Basal',
     '2': 'Eczema',
@@ -11,7 +11,7 @@ var skinClassifications = {
     '5': 'Monkey Pox',
     '6': 'Healthy'
   };
-  var quest = {
+export var quest = {
     'Acne/Eczema': {
         "How does you skin feel": ['Oily and Greasy', 'Dry and Flaky'],
         "What type of bumps do you experience?": ['Pimples with pus or blackheads', 'Itchy red patches or blisters'],
@@ -34,7 +34,7 @@ var skinClassifications = {
     }
 };
 
-var responses = {
+export var responses = {
     'Acne/Eczema':{
         "0" : {
             '0': '1',
@@ -135,11 +135,11 @@ export async function RunMainPrediction(updateQuestionsInParent) {
         const prediction = model.predict(imageTensor);
   
         const predictedClass = tf.argMax(prediction, 1).dataSync()[0];
-        const secondPredictedClass = tf.argMax(prediction, 1).dataSync()[1];
+        const secondPredictedClass = tf.argMax(prediction, 1).dataSync()[0];
         const predictedDisease = skinClassifications[predictedClass];
         const secondPredictedDisease = skinClassifications[secondPredictedClass];
         const confidence = prediction.max().dataSync()[0];
-        const confidence2 = prediction.max().dataSync()[1];
+        const confidence2 = prediction.max().dataSync()[0];
         console.log(prediction.dataSync());
         console.log(predictedClass);
         console.log(predictedDisease);
@@ -149,7 +149,7 @@ export async function RunMainPrediction(updateQuestionsInParent) {
         const classificationTextElement = document.getElementById('classificationText');
         classificationTextElement.innerHTML = `Prediction: ${predictedDisease}`; //(Confidence: ${(confidence * 100).toFixed(2)}%)
         
-        if (confidence <= 0.85 && predictedDisease == 'Eczema' || predictedDisease == 'Acne') {
+        if ((confidence * 100).toFixed(2) <= 85 && (predictedDisease == 'Eczema' || predictedDisease == 'Acne')) {
             classificationTextElement.innerHTML = `Prediction: ${predictedDisease} (Confidence: ${(confidence * 100).toFixed(2)}%)<br>Possible: ${secondPredictedDisease} Confidence: (${(confidence2 * 100).toFixed(2)}%)`;
         
             //Getting Questions
@@ -167,7 +167,7 @@ export async function RunMainPrediction(updateQuestionsInParent) {
             } catch (error) {
             console.error('Error obtaining questions:', error);
             }          
-      }
+        }
         
         el.style.display = 'none';
       };

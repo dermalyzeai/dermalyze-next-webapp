@@ -1,8 +1,12 @@
-
+import { skinClassifications, quest } from './predictionHelper';
 
 export async function obtainQuestions(predIndex, predIndexSecondary){
     const predDisease = skinClassifications[predIndex];
     const predDiseaseSecondary = skinClassifications[predIndexSecondary];
+
+    console.log('Primary Prediction:', predDisease);
+    console.log('Secondary Prediction:', predDiseaseSecondary);
+    
     if(skinClassifications[predIndex]<skinClassifications[predIndexSecondary]){
         const predDisease = skinClassifications[predIndexSecondary];
         const predDiseaseSecondary = skinClassifications[predIndex];
