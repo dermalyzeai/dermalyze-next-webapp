@@ -35,60 +35,46 @@ export var quest = {
 };
 
 export var responses = {
-    'Acne or Eczema':{
-        "0" : {
-            '0': '1',
-            '1': '2'
-        },
-        "1" : {
-            '0': '1',
-            '1': '2'
-        },
-        "2" : {
-            '0': '1',
-            '1': '2'
-        },
-        "3" : {
-            '0': '1',
-            '1': '2'
-        },
-        "4" : {
-            '0': '1',
-            '1': '2'
-        }
-       
-    },
-    'eczema':{
-        "q1" : {
-            'o1': 'r1',
-            'o2': 'r2'
-        },
-        "q2" : {
-            'o1': 'r1',
-            'o2': 'r2'
-        }
-    },
-    'melanoma or mole':{
-        "q1" : {
-            'o1': 'r1',
-            'o2': 'r2'
-        },
-        "q2" : {
-            'o1': 'r1',
-            'o2': 'r2'
-        }
-    },
-    'psoriasis':{
-        "q1" : {
-            'o1': 'r1',
-            'o2': 'r2'
-        },
-        "q2" : {
-            'o1': 'r1',
-            'o2': 'r2'
-        }
-    }
+  'Acne or Eczema': {
+      "0": {
+          'Oily and Greasy': '1',
+          'Dry and Flaky': '2'
+      },
+      "1": {
+          'Pimples with pus or blackheads': '1',
+          'Itchy red patches or blisters': '2'
+      },
+      "2": {
+          'Face, chest, or back': '1',
+          'Elbows, knees, or hands': '2'
+      },
+      "3": {
+          'Mostly during teenage years or hormonal changes': '1',
+          'At any age, often triggered by weather or allergens': '2'
+      },
+      "4": {
+          'Makes my skin more oily or causes breakouts': '1',
+          'Helps soothe dryness or irritation': '2'
+      }
+  }
 }
+var pointResults = {
+  'Acne or Eczema': [
+    { range: [5, 7], result: 'Acne' },
+    { range: [8, 10], result: 'Eczema' }
+  ],
+  'Melanoma or Mole': [
+    { range: [5, 6], result: 'Melanoma' },
+    { range: [7, 9], result: 'Mole' }
+  ],
+  'Psoriasis': [
+    { range: [5, 6], result: 'Mild Psoriasis' },
+    { range: [7, 8], result: 'Moderate Psoriasis' },
+    { range: [9, 10], result: 'Severe Psoriasis' }
+  ]
+};
+
+
 
 export async function RunMainPrediction(updateQuestionsInParent) {
     try {
@@ -188,3 +174,37 @@ export async function RunMainPrediction(updateQuestionsInParent) {
       console.error('Error running the AI model:', error);
     }
 };
+
+export function updatePrediction(quizTitle, totalPoints) {
+  console.log('Updating prediction for', quizTitle, 'with total points:', totalPoints);
+
+  // Get the results table for the current quiz title
+  const resultTable = pointResults[quizTitle];
+
+  if (!resultTable) {
+      console.error(`No point results found for quiz: ${quizTitle}`);
+      return;
+  }
+
+  // Ensure totalPoints doesn't go below 5
+  if (totalPoints < 5) {
+      console.error(`Total points (${totalPoints}) are below the minimum allowed value (5) for quiz: ${quizTitle}`);
+      return null;
+  }
+
+  // Loop through the resultTable to find which range the totalPoints falls into
+  for (let i = 0; i < resultTable.length; i++) {
+      const { range, result } = resultTable[i];
+
+      // Check if the totalPoints falls within the current range
+      if (totalPoints >= range[0] && totalPoints <= range[1]) {
+          console.log(`Prediction result: ${result}`);
+          const classificationTextElement = document.getElementById('classificationText');
+          classificationTextElement.innerHTML = `Updated Prediction Using the Quiz information : ${result}`
+      }
+  }
+
+  // If no range was found for the totalPoints
+  console.error(`No matching result found for points: ${totalPoints}`);
+
+}
