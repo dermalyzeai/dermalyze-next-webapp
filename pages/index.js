@@ -52,8 +52,8 @@ const Home = () => {
     <div>
       <div style={{ padding: '5px' }}></div>
       <BigBlock />
-      <div className={"row"}>
-        <div className={styles.instructions + " col-sm-7"}>
+      <div className={"row mx-center"}>
+        <div className={styles.instructions + " col-sm-7 mx-center"}>
           <h2>How to Use the App</h2>
           <ol>
             <li>Upload a clear image of your skin condition using the file uploader below.</li>
@@ -63,7 +63,7 @@ const Home = () => {
             <li>Click on the result to get more detailed information and recommendations.</li>
           </ol>
         </div>
-        <div className="col-sm-5">
+        <div className="col-sm-4 d-flex mx-center">
           <img src="/DermalyzeLogo.png" alt="Dermalyze Logo" style={{ }} />
         </div>
       </div>
