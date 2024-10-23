@@ -133,13 +133,10 @@ export async function RunMainPrediction(updateQuestionsInParent) {
         const model = await tf.loadLayersModel('dermalyze_tensorflow_js/model.json');
   
         const prediction = model.predict(imageTensor);
-  
         const predictedClass = tf.argMax(prediction, 1).dataSync()[0];
-        const secondPredictedClass = tf.argMax(prediction, 1).dataSync()[0];
-        const predictedDisease = skinClassifications[predictedClass];
-        const secondPredictedDisease = skinClassifications[secondPredictedClass];
         const confidence = prediction.max().dataSync()[0];
-        const confidence2 = prediction.max().dataSync()[0];
+        const predictedDisease = skinClassifications[predictedClass];
+
         console.log(prediction.dataSync());
         console.log(predictedClass);
         console.log(predictedDisease);
@@ -149,8 +146,8 @@ export async function RunMainPrediction(updateQuestionsInParent) {
         const classificationTextElement = document.getElementById('classificationText');
         classificationTextElement.innerHTML = `Prediction: ${predictedDisease}`; //(Confidence: ${(confidence * 100).toFixed(2)}%)
         
-        if ((confidence * 100).toFixed(2) <= 85 && (predictedDisease == 'Eczema' || predictedDisease == 'Acne')) {
-            classificationTextElement.innerHTML = `Prediction: ${predictedDisease} (Confidence: ${(confidence * 100).toFixed(2)}%)<br>Possible: ${secondPredictedDisease} Confidence: (${(confidence2 * 100).toFixed(2)}%)`;
+        if (predictedDisease == 'Eczema' || predictedDisease == 'Acne') {
+            classificationTextElement.innerHTML = `Prediction: ${predictedDisease} (Confidence: ${(confidence * 100).toFixed(2)}%)`;
         
             //Getting Questions
             try {
