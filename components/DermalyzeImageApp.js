@@ -57,27 +57,25 @@ const DermalyzeImageBlock = ({ questFunc }) => {
           </div>
 
           {files.length > 0 && (
-            <div className="file-list mb-4">
-              {files.map((file, index) => (
-                <div key={index} className="file-item mb-3 d-flex justify-content-between align-items-center">
-                  <div>
-                    <i className="bi bi-file-earmark-fill me-2"></i>
-                    {file.name}
-                  </div>
-                  <div style={{ width: "70%" }}>
-                    {/* <ProgressBar now={file.progress} label={`${file.progress}%`} /> */}
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
+  <div className="file-list mb-4">
+    {files.map((file, index) => (
+      <div key={index} className="file-item mb-3 d-flex justify-content-center align-items-center">
+        <div className="d-flex justify-content-center align-items-center mx-auto" style={{ textAlign: 'center' }}>
+          <i className="bi bi-file-earmark-fill me-2"></i>
+          {file.name}
+        </div>
+      </div>
+    ))}
+  </div>
+)}
+
 
           <button
             className="btn btn-primary w-100"
             onClick={handleUpload}
             disabled={files.length === 0}
           >
-            Run Dermalyze :)
+            Run Dermalyze 
           </button>
         </div>
         {/* <LoadingSpinner /> */}

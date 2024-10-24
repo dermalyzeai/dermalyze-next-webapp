@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
 import styles from './index.module.css';
 import Layout from '../components/Layout';
@@ -17,7 +17,11 @@ import DermalyzeImageBlock from '../components/DermalyzeImageApp.js';
 const Home = () => {
   const [linkHref, setLinkHref] = useState('');
   const [questions, setQuestions] = useState([]);
-  const [quizTitle, setQuizTitle]=useState([]);
+  const [quizTitle, setQuizTitle] = useState('');
+  
+  // Reference to the result element to scroll to
+  const resultRef = useRef(null);
+
   useEffect(() => {
     const classificationTextElement = document.getElementById('classificationText');
 
@@ -41,9 +45,14 @@ const Home = () => {
     };
   }, []);
 
-  const updateQuestionsInParent = (newQuestions,newQuizTitle) => {
+  const updateQuestionsInParent = (newQuestions, newQuizTitle) => {
     setQuestions(newQuestions);
     setQuizTitle(newQuizTitle);
+  };
+
+  // Function to scroll back to the result section
+  const scrollToResult = () => {
+    resultRef.current.scrollIntoView({ behavior: 'smooth' });
   };
 
   const handleRunMain = async () => {
@@ -66,41 +75,42 @@ const Home = () => {
           </ol>
         </div>
         <div className="col-sm-4 d-flex mx-center">
-          <img src="/DermalyzeLogo.png" alt="Dermalyze Logo" style={{ }} />
+          <img src="/DermalyzeLogo.png" alt="Dermalyze Logo" style={{}} />
         </div>
       </div>
-      <hr></hr>
+      <hr />
 
-      <DermalyzeImageBlock questFunc={updateQuestionsInParent}/>)
+      <DermalyzeImageBlock questFunc={updateQuestionsInParent} />
       <LoadingSpinner />
-      
-      {/* <h1 style={{ textAlign: 'center' }}>Skin Health AI</h1>
-      <div className={"row mx-center justify-content-md-center"}>
-      <div className = {"col-lg-8"}>
-      <div style={{ textAlign: 'center' }}>
-        <Canvas />
-      </div>
-      </div>
-      <div className = {"col-md-auto"}>
-        <SingleFileUploader />
-      <SubmitButton handleRunMain={handleRunMain} />
-      <LoadingSpinner />
-      </div>
-      </div> */}
+
       <Dropdown style={{ display: 'Block' }} />
-      
-     
-      <div>
+<br></br>
+      <div ref={resultRef}>
         <Link href={linkHref} legacyBehavior>
           <a>
-            <h2 style={{ textAlign: 'center' }} id="classificationText">
+            <h2
+              style={{
+                textAlign: 'center',
+                padding: '20px',
+                backgroundColor: '#f8f9fa',
+                borderRadius: '8px',
+                boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+                transition: 'all 0.3s ease',
+              }}
+              id="classificationText"
+            >
               Run our AI for a result!
             </h2>
           </a>
         </Link>
-      </div><br></br>
-      <hr></hr>
-      <Questions questions={questions} quizTitle={quizTitle} />
+      </div>
+      <br />
+      <hr />
+
+      {/* Conditionally render Questions component */}
+      {questions.length > 0 && (
+        <Questions questions={questions} quizTitle={quizTitle} scrollToResult={scrollToResult} />
+      )}
     </div>
   );
 };

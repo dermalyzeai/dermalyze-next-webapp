@@ -16,7 +16,45 @@
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  /*border: 2px solid #ffcc00;*/
   width: calc(33.333% - 90px); /* Adjust width to account for gap */
   box-sizing: border-box;
+}
+
+.card {
+  max-width: 540px;
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.memberImage {
+  width: 100%;
+  height: auto;
+  object-fit: cover; /* Ensures the image fills its container without distorting */
+  border-radius: 10px 0 0 10px; /* Matches the card's corner rounding */
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.titleCentered {
+  text-align: center;
+}
+
+.card-title {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.link {
+  margin-right: 10px;
+  color: #000;
+  text-decoration: none;
+}
+
+.link:hover {
+  color: #007bff;
 }
