@@ -80,7 +80,7 @@ export async function RunMainPrediction(updateQuestionsInParent) {
     try {
       var el = document.getElementById('spinner');
       el.style.display = 'block';
-      var imgFile = document.getElementById("file").files[0];
+      var imgFile = document.getElementById("file-upload").files[0];
   
       // Create an image element to load the uploaded file
       const img = document.createElement('img');

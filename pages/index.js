@@ -12,6 +12,7 @@ import Questions from '../components/Questions';
 import Dropdown from '../components/Dropdown.js';
 import * as tf from '@tensorflow/tfjs';
 import { RunMainPrediction } from '../utils/predictionHelper.js';
+import DermalyzeImageBlock from '../components/DermalyzeImageApp.js';
 
 const Home = () => {
   const [linkHref, setLinkHref] = useState('');
@@ -69,8 +70,11 @@ const Home = () => {
         </div>
       </div>
       <hr></hr>
+
+      <DermalyzeImageBlock questFunc={updateQuestionsInParent}/>)
+      <LoadingSpinner />
       
-      <h1 style={{ textAlign: 'center' }}>Skin Health AI</h1>
+      {/* <h1 style={{ textAlign: 'center' }}>Skin Health AI</h1>
       <div className={"row mx-center justify-content-md-center"}>
       <div className = {"col-lg-8"}>
       <div style={{ textAlign: 'center' }}>
@@ -82,7 +86,7 @@ const Home = () => {
       <SubmitButton handleRunMain={handleRunMain} />
       <LoadingSpinner />
       </div>
-      </div>
+      </div> */}
       <Dropdown style={{ display: 'Block' }} />
       
      
