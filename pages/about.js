@@ -1,7 +1,5 @@
 import styles from './about.module.css';
-import { FaInstagram } from 'react-icons/fa';
-import {FaGithub} from 'react-icons/fa';
-
+import { FaInstagram, FaGithub } from 'react-icons/fa';
 
 const About = () => {
   const sections = [
@@ -34,56 +32,51 @@ const About = () => {
       description: 'Adway is passionate about the medical field and he spends a lot of time researching diseases and remedies. Adway leads the medical side of Dermalyze, researching common skin diseases and writing informative posts.',
       image: '../assets/ProfileImages/adway-close.png',
       instagram: 'https://www.instagram.com/budwayk/',
-    
-       // Replace with actual image path
     },
     {
       name: 'Sameer Agarwal',
       jobTitle: 'Website Development',
       description: 'Sameer is passionate about computer science and developing web applications. At Dermalyze, he leads the development of the website, implementing the AI model and other critical features.',
-      image: '../assets/ProfileImages/sameerpicture.jpg',
-      instagram: 'https://www.instagram.com/sam.eer.agarwal/', // Replace with actual image path
+      image: '../assets/ProfileImages/sameer.jpg',
+      instagram: 'https://www.instagram.com/sam.eer.agarwal/',
       github: 'https://github.com/Elitelord',
     },
     {
       name: 'Murtaza Haque',
       jobTitle: 'Data & Marketing',
       description: 'Murtaza is passionate about mathematics and machine learning, he spends time researching machine learning techniques. Murtaza has compiled large portions of the dataset which Dermalyze uses.',
-      image: '../assets/ProfileImages/PhotoOfMe2023.jpg',
-      instagram: 'https://www.instagram.com/murtazahaque/', // Replace with actual image path
+      image: '../assets/ProfileImages/murtaza.jpg',
+      instagram: 'https://www.instagram.com/murtazahaque/',
       github: 'https://github.com/TheDarkLynx786',
     },
-    // Add more team members as needed
   ];
 
   return (
     <div className={styles.container}>
-  <h1 className={styles.titleCentered}>About Dermalyze</h1>
+      <h1 className={styles.titleCentered}>About Dermalyze</h1>
 
-  <div className={styles.grid}>
-    {sections.map((section, index) => (
-      <div key={index} className={styles.sectionBox}>
-        <h2 className={styles.titleCentered}>{section.title}</h2>
-        <p>{section.content}</p>
+      <div className={styles.grid}>
+        {sections.map((section, index) => (
+          <details key={index} className={styles.sectionBox}>
+            <summary className={styles.titleCentered}>{section.title}</summary>
+            <p>{section.content}</p>
+          </details>
+        ))}
       </div>
-    ))}
-  </div>
 
-  <h1 className={styles.titleCentered} id='team'>Meet the Team</h1>
+      <h1 className={styles.titleCentered} id='team'>Meet the Team</h1>
 
-  <div className={styles.grid}>
-    {teamMembers.map((member, index) => (
-      <div className="card mb-3" key={index} style={{ maxWidth: 540 + 'px' }}>
-        <div className="row g-0">
-          <div className="col-md-4">
-            <img
-              src={member.image}
-              alt={member.name}
-              className={styles.memberImage}
-            />
-          </div>
-          <div className="col-md-8">
-            <div className="card-body">
+      <div className={styles.grid}>
+        {teamMembers.map((member, index) => (
+          <div key={index} className={styles.teamCard}>
+            <div className={styles.teamCardImage}>
+              <img
+                src={member.image}
+                alt={member.name}
+                className={styles.memberImage}
+              />
+            </div>
+            <div className={styles.teamCardContent}>
               <h5 className={styles.cardTitle}>{member.name}</h5>
               {member.instagram && (
                 <a href={member.instagram} target="_blank" rel="noopener noreferrer" className={styles.link}>
@@ -99,13 +92,9 @@ const About = () => {
               <p>{member.description}</p>
             </div>
           </div>
-        </div>
+        ))}
       </div>
-    ))}
-  </div>
-</div>
-
-
+    </div>
   );
 };
 
