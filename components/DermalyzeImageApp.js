@@ -1,5 +1,5 @@
 // components/FileUpload.js
-
+import Link from 'next/link';
 import { useState } from "react";
 import Canvas from "./Canvas";
 import { RunMainPrediction } from "../utils/predictionHelper";
@@ -8,6 +8,8 @@ import { LoadingSpinner } from "./LoadingSpinner";
 
 const DermalyzeImageBlock = ({ questFunc }) => {
   const [files, setFiles] = useState([]);
+  const [linkHref, setLinkHref] = useState('');
+
 
   const handleFileChange = (e) => {
     const uploadedFiles = Array.from(e.target.files).map((file) => ({
@@ -19,7 +21,7 @@ const DermalyzeImageBlock = ({ questFunc }) => {
   };
 
   const handleUpload = async () => {
-    await RunMainPrediction(questFunc);
+    await RunMainPrediction(questFunc, setLinkHref);
   };
 
   return (
@@ -81,6 +83,15 @@ const DermalyzeImageBlock = ({ questFunc }) => {
           </button>
         </div>
         {/* <LoadingSpinner /> */}
+        <div>
+        <Link href={linkHref} legacyBehavior>
+          <a>
+            <h2 style={{ textAlign: 'center' }} id="classificationText">
+              Run our AI for a result!
+            </h2>
+          </a>
+        </Link>
+      </div>
       </div>
     </div>
     </div>

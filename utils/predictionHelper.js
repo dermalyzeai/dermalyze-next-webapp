@@ -76,7 +76,7 @@ var pointResults = {
 
 
 
-export async function RunMainPrediction(updateQuestionsInParent) {
+export async function RunMainPrediction(updateQuestionsInParent, linkyBoi) {
     try {
       var el = document.getElementById('spinner');
       el.style.display = 'block';
@@ -139,6 +139,10 @@ export async function RunMainPrediction(updateQuestionsInParent) {
         console.log("Second predicted class index:", secondPredictedClass);
         console.log("Second predicted disease:", secondPredictedDisease);
         console.log("Second confidence (%):", (secondConfidence * 100).toFixed(2));
+
+        //Linking
+        linkyBoi(`/posts/${predictedDisease.toLowerCase()}`);
+        console.log('Linking to:', `/posts/${predictedDisease.toLowerCase()}`);
   
         // Update the UI with the result
         const classificationTextElement = document.getElementById('classificationText');
@@ -167,6 +171,7 @@ export async function RunMainPrediction(updateQuestionsInParent) {
         }
         
         el.style.display = 'none';
+        return predictedDisease;
       };
 
   
