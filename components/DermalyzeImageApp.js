@@ -32,9 +32,9 @@ const DermalyzeImageBlock = ({ questFunc, scrollToResult }) => {
         <div className="col-md-7">
           <div className="card shadow-sm p-4">
             <div className="card-body">
-              <h5 className="card-title text-center">Try Dermalyze!</h5>
+              <h5 className="card-title text-center" id='appMiddle'>Try Dermalyze!</h5>
 
-              <div style={{ textAlign: 'center', height: '500px' }}>
+              <div style={{ textAlign: 'center', height: '500px' }} id=''>
                 <Canvas />
               </div>
 
