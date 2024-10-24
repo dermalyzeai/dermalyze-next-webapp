@@ -13,17 +13,17 @@ function Footer() {
     <section className="mb-4">
 
       <a className="btn btn-outline-light btn-floating m-1" href="https://boulderbugle.com/my-google-profile-Qr6XopIM" role="button"
-        ><Icon.Google />
+        ><Icon.Google className='icon-hover' color='white'/>
       </a>
 
 
       <a className="btn btn-outline-light btn-floating m-1" href="https://instagram.com/dermalyze" role="button"
-        ><Icon.Instagram />
+        ><Icon.Instagram color='white' />
        </a>
 
 
       <a className="btn btn-outline-light btn-floating m-1" href="https://github.com/dermalyzeai" role="button"
-        ><Icon.Github />
+        ><Icon.Github color='white' />
       </a>
     </section>
 
@@ -31,7 +31,7 @@ function Footer() {
 
 
 
-  <div className="text-center p-3 bg-dark" >
+  <div className="text-center p-3 bg-dark text-white" >
     © &nbsp; {new Date().getFullYear()} Copyright:&nbsp;
     <a className="text-white" href="#">Dermalyze</a>
   </div>
