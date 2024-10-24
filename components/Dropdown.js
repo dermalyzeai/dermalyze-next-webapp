@@ -44,7 +44,7 @@ export default function Dropdown() {
                                 aria-controls="collapseOne"
                                 onClick={toggleAccordion}
                             >
-                                Demographic Form
+                                Please fill out this Demographic Form for improved results
                             </button>
                         </h2>
                         <div
