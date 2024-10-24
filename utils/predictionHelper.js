@@ -13,7 +13,7 @@ export var skinClassifications = {
   };
 export var quest = {
     'Acne or Eczema': {
-        "How does you skin feel": ['Oily and Greasy', 'Dry and Flaky'],
+        "How does your skin feel?": ['Oily and Greasy', 'Dry and Flaky'],
         "What type of bumps do you experience?": ['Pimples with pus or blackheads', 'Itchy red patches or blisters'],
         "Where do the bumps mostly appear?": ['Face, chest, or back', 'Elbows, knees, or hands'],
         "How often do you experience flare-ups?": ['Mostly during teenage years or hormonal changes', 'At any age, often triggered by weather or allergens'],
