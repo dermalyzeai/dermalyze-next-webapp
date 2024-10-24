@@ -76,7 +76,7 @@ function Questions({ questions, quizTitle, scrollToResult }) {
                     ))}
   
                     <div className="text-center">
-                      <button type="submit" className="btn btn-primary w-50">
+                      <button type="submit" className={"btn btn-primary w-50" + " "}>
                         Submit
                       </button>
                     </div>

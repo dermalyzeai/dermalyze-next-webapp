@@ -7,3 +7,9 @@
     border-radius: 8px;
     max-height: min-content;
   }
+
+  .greenDermalyze {
+    /*color: #63892B;*/
+    background-color: #63892B !important;
+    border-color: #63892B !important; 
+}
