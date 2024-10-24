@@ -54,7 +54,7 @@ const Home = () => {
       <div style={{ padding: '5px' }}></div>
       <BigBlock />
       <div className={"row mx-center"}>
-        <div className={styles.instructions + " col-sm-7 mx-center"}>
+        <div className={styles.instructions + " col-sm-5 mx-center"}>
           <h2>How to Use the App</h2>
           <ol>
             <li>Upload a clear image of your skin condition using the file uploader below.</li>
@@ -69,14 +69,23 @@ const Home = () => {
         </div>
       </div>
       <hr></hr>
+      
       <h1 style={{ textAlign: 'center' }}>Skin Health AI</h1>
+      <div className={"row mx-center justify-content-md-center"}>
+      <div className = {"col-lg-8"}>
       <div style={{ textAlign: 'center' }}>
         <Canvas />
       </div>
-      <SingleFileUploader />
+      </div>
+      <div className = {"col-md-auto"}>
+        <SingleFileUploader />
       <SubmitButton handleRunMain={handleRunMain} />
       <LoadingSpinner />
+      </div>
+      </div>
       <Dropdown style={{ display: 'Block' }} />
+      
+     
       <div>
         <Link href={linkHref} legacyBehavior>
           <a>
@@ -85,7 +94,8 @@ const Home = () => {
             </h2>
           </a>
         </Link>
-      </div>
+      </div><br></br>
+      <hr></hr>
       <Questions questions={questions} quizTitle={quizTitle} />
     </div>
   );

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { processData } from '../utils/questionHelper';
-
+import styles from './Questions.module.css';
 
 function Questions({ questions, quizTitle }) {
   const [formData, setFormData] = useState({});
@@ -28,7 +28,7 @@ function Questions({ questions, quizTitle }) {
         </div>
       </div>
       <div className="justify-content-center" id="questi" style={{ display: questions ? 'block' : 'none' }}>
-        <div><h1>Here are a few extra questions to help decide if your skin condition is {quizTitle}</h1></div>
+        <div className = {styles.title + " col-sm-7 mx-center fw-normal"}><h1>Here are a few extra questions to help decide if your skin condition is {quizTitle}</h1></div>
         <form onSubmit={handleSubmit} style = {{padding: '0 20px'}}>
         {questions.map((questionKey, index) => (
             <div className="mb-3" key={index}>
