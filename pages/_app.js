@@ -24,13 +24,13 @@ function MyApp({ Component, pageProps }) {
 
       // Load scripts in sequence
         loadScript('./scripts/classifications.js')
-        .then(() => {var numClasses = skinClassifications.length})
-        .then(() => loadScript('./scripts/image-loader.js'))
-        .then(() => loadScript('./scripts/jquery.min.js'))
-        .then(() => loadScript('./scripts/ndarray-browser.min.js'))
-        .then(() => loadScript('https://cdn.jsdelivr.net/npm/onnxjs/dist/onnx.min.js'))
-        .then(() => loadScript('./scripts/script.js'))
-        .then(() => loadScript('https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js'))
+        // .then(() => {var numClasses = skinClassifications.length})
+        // .then(() => loadScript('./scripts/image-loader.js'))
+        // .then(() => loadScript('./scripts/jquery.min.js'))
+        // .then(() => loadScript('./scripts/ndarray-browser.min.js'))
+        // .then(() => loadScript('https://cdn.jsdelivr.net/npm/onnxjs/dist/onnx.min.js'))
+        // .then(() => loadScript('./scripts/script.js'))
+        // .then(() => loadScript('https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js'))
  
         .catch((error) => {
           console.error('Error loading scripts:', error);

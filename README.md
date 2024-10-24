@@ -1,7 +1,7 @@
 # Dermalyze-Next-WebApp
 The next.js for Dermalyze.
 
-Try it [HERE]: https://dermalyze.cyberneel.design
+Try it [HERE]: https://dermalyze.cyberneel.com
 
 Shield: [![CC BY-NC-SA 4.0][cc-by-nc-sa-shield]][cc-by-nc-sa]
 

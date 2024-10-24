@@ -3,6 +3,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  color: var(--text-color);
 }
 
 body {
@@ -10,13 +11,24 @@ body {
   line-height: 1.6;
 }
 
+/* globals.css or Footer.css */
+.icon-hover:hover {
+  color: #000; /* Change this to the desired hover color */
+}
+
+/* globals.css */
+.background-color {
+  background-color: var(--background-color); /* Change this to your desired color */
+}
+
 
 :root {
   --primary-color: #333333;
   --secondary-color: #2ecc71;
-  --text-color: #333;
-  --background-color: #f5f5f5;
+  --text-color: #402D27;
+  --background-color: #F5F3EF;
   --header-height: 60px;
+  background-color: var(--background-color) !important;
 }
 
 

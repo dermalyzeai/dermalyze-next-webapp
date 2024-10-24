@@ -15,13 +15,13 @@ const Canvas = ({ width, height }) => {
   }, []);
 
   return (
-    <canvas className="col-lg-3" id="canvas" style={{ border: '1px solid grey' }} ref={canvasRef} height={height} width={width} />
+    <canvas className="col-lg-3" id="canvas" style={{ border: '1px solid grey', width: '-webkit-fill-available', height: 'auto', maxHeight: '500px', maxWidth: '500px' }} ref={canvasRef} height={height} width={width} />
   );
 }
 
 Canvas.defaultProps = {
-  width: 256,
-  height: 256
+  width: 224,
+  height: 224
 };
 
 export default Canvas;

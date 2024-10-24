@@ -34,7 +34,7 @@ async function runExample(test=true) {
   const sessionEczemaPsoriasis = new onnx.InferenceSession({ backendHint: 'webgl' });
 
   // Load an ONNX model. This model is Resnet18 that takes a 1*3*224*224 image and classifies it.
-  await sessionMain.loadModel("../models/dermalyze-ai-resnet-ft-4.onnx");
+  await sessionMain.loadModel("./models/skin_disease_mobilenetv3.onnx");
   await sessionEczemaPsoriasis.loadModel("../models/dermalyze-ai-resnet-ft-4_eczemaVSpsoriasis-EVAL.onnx");
 
   // Load image.
@@ -89,8 +89,8 @@ async function RunModel(data, width, height, updateQuestionsInParent) {
   const sessionEczemaPsoriasis = new onnx.InferenceSession({ backendHint: 'webgl' });
 
   // Load an ONNX model. This model is Resnet18 that takes a 1*3*224*224 image and classifies it.
-  await sessionMain.loadModel("./models/dermalyze-ai-resnet-ft-4.onnx");
-  await sessionEczemaPsoriasis.loadModel("./models/dermalyze-ai-resnet-ft-4_eczemaVSpsoriasis-EVAL.onnx");
+  await sessionMain.loadModel("/models/skin_disease_mobilenetv3.onnx");
+  //await sessionEczemaPsoriasis.loadModel("./models/dermalyze-ai-resnet-ft-4_eczemaVSpsoriasis-EVAL.onnx");
 
   const preprocessedData = preprocess(data, width, height);
   const inputTensor = new onnx.Tensor(preprocessedData, 'float32', [1, 3, width, height]);
@@ -101,11 +101,11 @@ async function RunModel(data, width, height, updateQuestionsInParent) {
 
   // Render the output result in html.
   var pred = printMatchesMain(outputData, updateQuestionsInParent);
-  if(pred == 1 || pred == 3) {
-    outputMap = await sessionEczemaPsoriasis.run([inputTensor]);
-    outputData = outputMap.values().next().value.data;
-    pred = printMatchesEczemaPsoriasis(outputData);
-  };
+  // if(pred == 1 || pred == 3) {
+  //   outputMap = await sessionEczemaPsoriasis.run([inputTensor]);
+  //   outputData = outputMap.values().next().value.data;
+  //   pred = printMatchesEczemaPsoriasis(outputData);
+  // };
   var el = document.getElementById('spinner');
   el.style.display  = 'none';
 }

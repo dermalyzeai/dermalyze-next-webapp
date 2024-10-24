@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import styles from './contact.module.css';
 
 const formAction = process.env.CONTACT_FORM_ACTION
 const firstNameID = process.env.CONTACT_FIRST_NAME_ID
@@ -68,7 +69,7 @@ const ContactForm = () => {
             style={{ width: '100%', padding: '8px' }}
           ></textarea>
         </div>
-        <button type="submit" style={{ padding: '10px 15px' }}>
+        <button type="submit" className={styles.button}>
           Submit
         </button>
       </form>
