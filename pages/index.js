@@ -51,8 +51,11 @@ const Home = () => {
   };
 
   // Function to scroll back to the result section
+  
   const scrollToResult = () => {
-    resultRef.current.scrollIntoView({ behavior: 'smooth' });
+    if (resultRef.current) {
+      resultRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   const handleRunMain = async () => {
@@ -80,11 +83,12 @@ const Home = () => {
       </div>
       <hr />
 
-      <DermalyzeImageBlock questFunc={updateQuestionsInParent} />
+      <DermalyzeImageBlock questFunc={updateQuestionsInParent} scrollToResult={scrollToResult} />
       <LoadingSpinner />
 
       <Dropdown style={{ display: 'Block' }} />
-<br></br>
+
+{/* <br></br>
       <div ref={resultRef}>
         <Link href={linkHref} legacyBehavior>
           <a>
@@ -103,7 +107,8 @@ const Home = () => {
             </h2>
           </a>
         </Link>
-      </div>
+      </div> */}
+
       <br />
       <hr />
 
