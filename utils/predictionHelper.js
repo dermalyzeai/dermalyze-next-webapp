@@ -149,7 +149,7 @@ export async function RunMainPrediction(updateQuestionsInParent, linkyBoi) {
         classificationTextElement.innerHTML = `Prediction: ${predictedDisease}`; //(Confidence: ${(confidence * 100).toFixed(2)}%)
         
         if (predictedDisease == 'Eczema' || predictedDisease == 'Acne') {
-            classificationTextElement.innerHTML = `Prediction: ${predictedDisease} (Confidence: ${(confidence * 100).toFixed(2)}%)`;
+            classificationTextElement.innerHTML = `Prediction: ${predictedDisease}<br>(Confidence: ${(confidence * 100).toFixed(2)}%)`;
         
             //Getting Questions
             try {

@@ -2,6 +2,8 @@ import Link from 'next/link';
 import { useState, useRef } from "react";
 import Canvas from "./Canvas";
 import { RunMainPrediction } from "../utils/predictionHelper";
+import styles from './DermalyzeImageApp.module.css';
+
 
 const DermalyzeImageBlock = ({ questFunc, scrollToResult }) => {
   const [files, setFiles] = useState([]);
@@ -29,7 +31,7 @@ const DermalyzeImageBlock = ({ questFunc, scrollToResult }) => {
   return (
     <div className="container my-5">
       <div className="row justify-content-center">
-        <div className="col-md-7">
+        <div className="col-md-8">
           <div className="card shadow-sm p-4">
             <div className="card-body">
               <h5 className="card-title text-center" id='appMiddle'>Try Dermalyze!</h5>
@@ -73,7 +75,7 @@ const DermalyzeImageBlock = ({ questFunc, scrollToResult }) => {
               )}
 
               <button
-                className="btn btn-primary w-100"
+                className={"btn btn-primary w-100 " + styles.greenDermalyze + " "}
                 onClick={handleUpload}
                 disabled={files.length === 0}
               >

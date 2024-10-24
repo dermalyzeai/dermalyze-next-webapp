@@ -15,7 +15,7 @@ const Canvas = ({ width, height }) => {
   }, []);
 
   return (
-    <canvas className="col-lg-3" id="canvas" style={{ border: '1px solid grey', height: '-webkit-fill-available', width: 'auto' }} ref={canvasRef} height={height} width={width} />
+    <canvas className="col-lg-3" id="canvas" style={{ border: '1px solid grey', width: '-webkit-fill-available', height: 'auto', maxHeight: '500px' }} ref={canvasRef} height={height} width={width} />
   );
 }
 

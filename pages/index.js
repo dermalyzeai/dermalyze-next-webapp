@@ -66,7 +66,7 @@ const Home = () => {
     <div>
       <div style={{ padding: '5px' }}></div>
       <BigBlock />
-      <div className={"row mx-center"}>
+      <div className={"row "}>
         <div className={styles.instructions + " col-sm-5 mx-center"}>
           <h2>How to Use the App</h2>
           <ol>
@@ -78,7 +78,7 @@ const Home = () => {
           </ol>
         </div>
         <div className="col-sm-4 d-flex mx-center">
-          <img src="/DermalyzeLogo.png" alt="Dermalyze Logo" style={{}} />
+          <img src="/DermalyzeLogo.png" alt="Dermalyze Logo" style={{height: '100px', height: 'auto'}} className='' />
         </div>
       </div>
       <hr />
