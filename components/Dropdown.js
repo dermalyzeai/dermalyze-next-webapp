@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { processDemographicData } from '../utils/questionHelper.js';
+import styles from './BigBlock.module.css'
 
 export default function Dropdown() {
     const [formData, setFormData] = useState({});
@@ -81,7 +82,7 @@ export default function Dropdown() {
                                         </label>
                                         <input type="text" className="form-control" id="FamilyHistoryResponse" placeholder="None" />
                                     </div>
-                                    <button type="submit" className="btn btn-primary">Submit</button>
+                                    <button type="submit" className={"btn btn-primary " + styles.greenDermalyze}>Submit</button>
                                 </form>
                             </div>
                         </div>
