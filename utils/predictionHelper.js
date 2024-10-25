@@ -74,10 +74,11 @@ var pointResults = {
   ]
 };
 
-
+var linkyBoiRef = null;
 
 export async function RunMainPrediction(updateQuestionsInParent, linkyBoi) {
     try {
+      linkyBoiRef = linkyBoi;
       var el = document.getElementById('spinner');
       el.style.display = 'block';
       var imgFile = document.getElementById("file-upload").files[0];
@@ -206,6 +207,7 @@ export function updatePrediction(quizTitle, totalPoints) {
           console.log(`Prediction result: ${result}`);
           const classificationTextElement = document.getElementById('classificationText');
           classificationTextElement.innerHTML = `Updated Prediction Using the Quiz information : ${result}`
+          linkyBoiRef(`/posts/${result.toLowerCase()}`);
       }
   }
 
